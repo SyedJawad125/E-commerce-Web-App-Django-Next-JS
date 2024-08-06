@@ -17,7 +17,7 @@ const ProductsCom = () => {
         toast.success(router.query.name);
         router.replace('/ProductsCom', undefined, { shallow: true });
       } else if (flag) {
-        toast.success('');
+        // toast.success('');
         setFlag(false);
       }
 
