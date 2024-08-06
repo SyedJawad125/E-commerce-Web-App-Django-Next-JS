@@ -7,9 +7,9 @@ const NavbarCom = () => {
   return (
     <>
     <nav className="bg-blue-700 w-full">
-  <div className="container mx-auto flex justify-between items-center p-4">
+  <div className="container mx-auto flex justify-between items-center p-2">
     <div className="text-white text-xl font-bold">
-      Logo
+      ONLINE SHOP
     </div>
     <ul className="flex space-x-10 ml-auto mr-20">
       <li>
