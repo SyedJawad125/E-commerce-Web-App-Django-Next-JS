@@ -1,89 +1,75 @@
 'use client';
-import {React, useEffect, useState} from 'react'
-// import { useLocation} from 'react-router-dom'
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AxiosInstance from "@/components/AxiosInstance";
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const ProductsCom = () => {
+  const router = useRouter();
+  const [records, setRecords] = useState([]);
+  const [data, setData] = useState([]);
+  const [flag, setFlag] = useState(false);
 
-    // const navigate = useNavigate()
-    // const location = useLocation()
-    // const router = useRouter()
-    const [records, setRecords] = useState([])
-    const [data, setData] = useState([])
-    const [flag, setFlag] = useState(false)
-
+  useEffect(() => {
     
+      if (router.query && router.query.name) {
+        toast.success(router.query.name);
+        router.replace('/ProductsCom', undefined, { shallow: true });
+      } else if (flag) {
+        toast.success('');
+        setFlag(false);
+      }
 
-   
-    useEffect(()=>{
-        // if (location.state && location.state.name){
-        //     toast.success(location.state.name)
-        //     navigate('/product', {state: ''})
-        //   }
-        //   else if (flag == true){
-        //     toast.success('Product deleted')
-        //     setFlag(false)
-        //   }
-
-           
-        const receiveData = async (flag, location) => {
-            try {
-                const res = await AxiosInstance.get('/ecommerce/product');
-                console.log('API response:', res);
-                if (res && res.data && res.data.data && res.data.data.data) {
-                    setRecords(res.data.data.data);
-                    setData(res.data);
-                } else {
-                    console.error('Unexpected response structure:', res);
-                }
-            } catch (error) {
-                console.error('Error occurred:', error);
-            }
-        };
-    
-            receiveData();
-        }, [flag, location.state]); // Ensure flag and location.state are defined
-    
-
-    const deleteRecord = async (id) => {
-    try{
-        const res = await AxiosInstance.delete(`/ecommerce/product?id=${id}`)
-        if(res){
-            console.log('Delete Successfully')
-            setFlag(true)
+      const receiveData = async () => {
+        try {
+          const res = await AxiosInstance.get('/ecommerce/product');
+          if (res && res.data && res.data.data && res.data.data.data) {
+            setRecords(res.data.data.data);
+            setData(res.data);
+          } else {
+            console.error('Unexpected response structure:', res);
+          }
+        } catch (error) {
+          console.error('Error occurred:', error);
         }
-    }
-    catch(error){
-        console.log(error)
-    }
-    }
-    // const updateRecord = async (item) => {
-    //     router.push({
-    //         pathname: '/UpdateProductComponents',
-    //         query: { data: JSON.stringify(item) }
-    //     });
-    // };
+      };
 
-  
+      receiveData();
+    }
+  , [flag, router.query?.name]);
+
+  const deleteRecord = async (id) => {
+    try {
+      const res = await AxiosInstance.delete(`/ecommerce/product?id=${id}`);
+      if (res) {
+        setFlag(true);
+        toast.success('Product deleted successfully!');
+      }
+    } catch (error) {
+      toast.error('Error deleting product!');
+    }
+  };
+
+  const updateRecord = async (item) => {
+    router.push({
+      pathname: '/UpdateProductComponents',
+      query: { data: JSON.stringify(item) },
+    });
+  };
+
   return (
     <div className='container mx-auto my-4 ml-56 w-3/4'>
       <h2 className='text-2xl font-bold mb-4'>List Of Products</h2>
-
       <button
         className='btn btn-primary mt-3 bg-blue-500 text-white py-2 px-4 rounded'
         onClick={() => router.push('/Add/Addproduct')}
       >
         Add Product
       </button>
-
       <br />
       <br />
-
       {data ? <p>Total: {data.count}</p> : <p>Total: 0</p>}
-
       <div className='container mt-5 mr-10'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           {records ? (
@@ -124,9 +110,9 @@ const ProductsCom = () => {
           )}
         </div>
       </div>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </div>
-  )
-}
+  );
+};
 
-export default ProductsCom
+export default ProductsCom;

@@ -21,7 +21,7 @@ const TopNavbarCom = () => {
               Sign Out
             </button>
           ) : (
-            <Link href="/login">
+            <Link href="/Login">
               <div className="flex items-center space-x-2 ">
                 <FontAwesomeIcon icon={faSignInAlt} />
                 <span>Login</span>
