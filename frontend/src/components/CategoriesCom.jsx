@@ -4,6 +4,8 @@ import {React, useEffect, useState} from 'react'
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import AxiosInstance from "@/components/AxiosInstance";
+import { useRouter } from 'next/navigation';
+
 
 
 
@@ -12,6 +14,8 @@ const CategoryCom = () => {
     // const navigate = useNavigate()
     // const location = useLocation()
 
+    const router = useRouter();
+    
     const [records, setRecords] = useState([])
     const [data, setData] = useState([])
     const [flag, setFlag] = useState(false)
@@ -67,9 +71,12 @@ const CategoryCom = () => {
     <div className="container mx-auto my-4 ml-56 w-3/4">
     <h2 className="text-2xl font-bold mb-4">List Of Categories</h2>
   
-    {/* <Link href="/Add/Addcategory">
-      <a className="btn btn-primary mt-3 bg-blue-500 text-white py-2 px-4 rounded">Add Category</a>
-    </Link> */}
+    <button
+        className='btn btn-primary mt-3 bg-blue-500 text-white py-2 px-4 rounded'
+        onClick={() => router.push('/Add/Addcategory')}
+      >
+        Add Category
+      </button>
   
     <br />
     <br />

@@ -2,6 +2,8 @@ import React from 'react'
 import NavbarCom from "@/components/NavbarCom";
 import AboutPageCom from "@/components/AboutPageCom";
 import TopNavbarCom from "@/components/TopNavbarCom";
+import FooterCom from "@/components/FooterCom";
+
 
 
 
@@ -13,7 +15,9 @@ const about = () => {
       <TopNavbarCom/>
       <NavbarCom/>
       <AboutPageCom/>
-      <h1>About</h1>
+      <div className="mt-20">
+        <FooterCom />
+      </div>
     </div>
   )
 }

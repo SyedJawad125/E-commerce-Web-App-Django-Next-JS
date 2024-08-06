@@ -1,7 +1,44 @@
 // pages/contact.js
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
+import AxiosInstance from "@/components/AxiosInstance";
+import { useRouter } from 'next/navigation';
+
 
 const Contact = () => {
+  const [name, setname] = useState('')
+  const [phone_number, setphone_number] = useState('')
+  const [email, setemail] = useState('')
+  const [message, setmessage] = useState('')
+
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    try {
+        e.preventDefault();
+        const payload = {"name":name ,"phone_number":phone_number, 
+          "email":email, "message":message}
+        
+        const response = await AxiosInstance.post('/ecommerce/contact', payload , {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        });
+        if (response){
+           
+          console.log('Response:', response.data);
+          setname('');
+          setphone_number('');
+          setemail('');
+          setmessage('');
+
+          router.push('/contact');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+    };
+  
   return (
     <div className="min-h-screen bg-black-100 mt-0 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ml-56 w-3/4">
       <div className="max-w-md w-full space-y-8">
@@ -11,23 +48,27 @@ const Contact = () => {
             We'd love to hear from you!
           </p>
         </div>
-        <form className="mt-8 space-y-6">
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="name" className="sr-only">Name</label>
-              <input id="name" name="name" type="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Your Name" />
+              <input id="name" name="name" type="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+              placeholder="Your Name" value={name} onChange= {e => setname(e.target.value)} />
             </div>
             <div>
               <label htmlFor="email-address" className="sr-only">Email address</label>
-              <input id="email-address" name="email" type="email" autoComplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+              <input id="email-address" name="email" type="email" autoComplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+              placeholder="Email address"  value={email} onChange= {e => setemail(e.target.value)} />
             </div>
             <div>
               <label htmlFor="phone-number" className="sr-only">Phone Number</label>
-              <input id="phone-number" name="email" type="phone-number" autoComplete="phone-number" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Phone Number" />
+              <input id="phone-number" name="email" type="phone-number" autoComplete="phone-number" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+              placeholder="Phone Number"   value={phone_number} onChange= {e => setphone_number(e.target.value)}/>
             </div>
             <div>
               <label htmlFor="message" className="sr-only">Message</label>
-              <textarea id="message" name="message" rows="4" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Your Message"></textarea>
+              <textarea id="message" name="message" rows="4" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+              placeholder="Your Message"  value={message} onChange= {e => setmessage(e.target.value)}></textarea>
             </div>
           </div>
 

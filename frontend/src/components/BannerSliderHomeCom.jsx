@@ -22,25 +22,56 @@ const BannerSlider = () => {
   };
 
   return (
-    <div className="container mx-auto px-5 py-7">
-      <Slider {...settings}>
-        <div>
-          <Image src={banner1} alt="Banner 1" className="w-full" />
-        </div>
-        <div>
-          <Image src={banner2} alt="Banner 2" className="w-full" />
-        </div>
-        <div>
-          <Image src={banner3} alt="Banner 3" className="w-full" />
-        </div>
-        <div>
-          <Image src={banner4} alt="Banner 4" className="w-full" />
-        </div>
-        <div>
-          <Image src={banner5} alt="Banner 5" className="w-full" />
-        </div>
-      </Slider>
-    </div>
+    
+    <div className="container mx-auto px-5 py-7 mb-20">
+    <Slider {...settings} className="h-50"> {/* Adjust height as needed */}
+      <div className="h-full">
+        <Image 
+          src={banner1} 
+          alt="Banner 1" 
+          width={800}  // Adjust width as needed
+          height={250} // Adjust height as needed
+          className="object-cover w-full h-1/2"
+        />
+      </div>
+      <div className="h-full">
+        <Image 
+          src={banner1} 
+          alt="Banner 2" 
+          width={800}  // Adjust width as needed
+          height={250} // Adjust height as needed
+          className="object-cover w-full h-1/2"
+        />
+      </div>
+      <div className="h-full">
+        <Image 
+          src={banner1} 
+          alt="Banner 3" 
+          width={800}  // Adjust width as needed
+          height={300} // Adjust height as needed
+          className="object-cover w-full h-1/2"
+        />
+      </div>
+      <div className="h-full">
+        <Image 
+          src={banner1} 
+          alt="Banner 4" 
+          width={800}  // Adjust width as needed
+          height={300} // Adjust height as needed
+          className="object-cover w-full h-1/2"
+        />
+      </div>
+      <div className="h-full">
+        <Image 
+          src={banner1} 
+          alt="Banner 5" 
+          width={800}  // Adjust width as needed
+          height={300} // Adjust height as needed
+          className="object-cover w-full h-1/2"
+        />
+      </div>
+    </Slider>
+  </div>
   );
 };
 
