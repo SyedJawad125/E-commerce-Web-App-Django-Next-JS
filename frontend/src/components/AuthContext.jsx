@@ -1,50 +1,37 @@
+'use client'
 import React, { createContext, useState } from 'react';
-import axiosInstance from './AxiosInstance'
+import AxiosInstance from "@/components/AxiosInstance";
 
 
-export const AuthCon = createContext();
+export const AuthContext = createContext();
+console.log(AuthContext);
 
+const state = useContext(name)
+console.log(state)
 
-export const AuthContext = ({ children }) => {
-  //  const navigate = useNavigate()
- 
-
-  const [token, setToken] = useState(()=> {
-    const token = localStorage.getItem('token')
-    return token ? JSON.parse(token) : null
-  })
+export const AuthProvider = ({ children }) => {
+  const [token, setToken] = useState(() => {
+    const token = localStorage.getItem('token');
+    return token ? JSON.parse(token) : null;
+  });
 
   const login = (userToken) => {
-    localStorage.setItem('token', JSON.stringify(userToken))
+    localStorage.setItem('token', JSON.stringify(userToken));
     setToken(userToken);
   };
 
   const logout = async () => {
-
-    const res = await axiosInstance.post('/user/logout')
-    if (res){
-      console.log('Logout')
+    const res = await AxiosInstance.post('/user/logout');
+    if (res) {
+      console.log('Logout');
     }
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
     setToken(null);
-      // navigate('/');
-    
   };
 
-
-  // useEffect(()=>{
-  //   const storedToken = localStorage.getItem('token')
-    
-  //   if (storedToken){
-  //     setToken(JSON.parse(storedToken))
-  //   }
-  // }, [token])
-
-
   return (
-    <AuthCon.Provider value={{ token, login, logout }}>
+    <AuthContext.Provider value={{ token, login, logout }}>
       {children}
-    </AuthCon.Provider>
+    </AuthContext.Provider>
   );
 };
-

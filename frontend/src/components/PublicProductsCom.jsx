@@ -37,11 +37,8 @@ const PublicProducts = () => {
     }, [flag, router.query?.name]);
 
     const handleProductClick = (ProductId) => {
-        router.push({
-            pathname: '/productdetailpage',
-            query: { ProductId },
-        });
-    };
+        router.push(`/productdetailpage/${ProductId}`);
+      };
 
     return (
       <div className="container mx-auto my-4 ml-56 w-3/4">
