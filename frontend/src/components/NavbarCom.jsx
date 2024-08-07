@@ -38,6 +38,16 @@ const NavbarCom = () => {
         </Link>
       </li>
       <li>
+        <Link href="/publicproducts">
+          <div className="text-white hover:text-gray-300">P Products</div>
+        </Link>
+      </li>
+      <li>
+        <Link href="/publiccategories">
+          <div className="text-white hover:text-gray-300">P Categories</div>
+        </Link>
+      </li>
+      <li>
         <Link href="/contact">
           <div className="text-white hover:text-gray-300">Contact</div>
         </Link>
