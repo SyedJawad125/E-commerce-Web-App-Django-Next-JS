@@ -52,6 +52,11 @@ const NavbarCom = () => {
           <div className="text-white hover:text-gray-300">Contact</div>
         </Link>
       </li>
+      <li>
+        <Link href="/admindashboard">
+          <div className="text-white hover:text-gray-300">Admin</div>
+        </Link>
+      </li>
     </ul>
   </div>
 </nav>

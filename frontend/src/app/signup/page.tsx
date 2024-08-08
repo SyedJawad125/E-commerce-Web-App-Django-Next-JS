@@ -44,11 +44,11 @@ const SignUp = () => {
           </span>
         </h3>
         <p className="text-gray-300 text-lg leading-relaxed mb-6 text-center lg:text-left">
-          A Human Resource Management System (HRMS) is a comprehensive software
-          suite designed to streamline and automate various HR processes within
-          an organization. It encompasses functionalities like recruitment, onboarding,
-          payroll, performance management, employee attendance, benefits administration,
-          and compliance with labor laws.
+        E-commerce business online refers to the buying and selling of goods and services over the internet.
+         It allows businesses to reach a global audience, operate 24/7, and offer a wide range of products 
+         and services without the limitations of a physical store. Key components include a user-friendly 
+         website, secure payment gateways, efficient logistics, and digital marketing strategies to attract
+          and retain customers.
         </p>
     </div>
 

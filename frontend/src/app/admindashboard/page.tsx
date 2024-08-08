@@ -1,9 +1,12 @@
 'use client'
 import React from 'react'
+import AdminDashboardCom from "@/components/AdminDashboardCom";
 
 const AdminDashborad = () => {
   return (
-    <div><h1>Admin dashborad Page</h1></div>
+    <div>
+      <AdminDashboardCom/>
+    </div>
   )
 }
 
