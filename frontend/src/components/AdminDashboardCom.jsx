@@ -40,7 +40,7 @@ const AdminPage = () => {
             <div className="my-4 cursor-pointer hover:bg-gray-300">Customers</div>
           </nav> */}
 
-          <div className="flex-1 p-8 bg-gray-800 h-3/4 mb-1">
+          <div className="flex-1 p-8 bg-gray-800 h-3/4 ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-white p-4 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Sales Overview</h2>
@@ -50,7 +50,7 @@ const AdminPage = () => {
                 <h2 className="text-2xl font-bold mb-4">Recent Orders</h2>
                 <table className="w-full border-collapse mt-4">
                   <thead>
-                    <tr className="bg-gray-200">
+                    <tr className="bg-black">
                       <th className="border p-2">Order ID</th>
                       <th className="border p-2">Customer</th>
                       <th className="border p-2">Status</th>
@@ -58,25 +58,25 @@ const AdminPage = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="bg-gray-100">
+                    <tr className="bg-gray-700">
                       <td className="border p-2">001</td>
                       <td className="border p-2">John Doe</td>
                       <td className="border p-2">Shipped</td>
                       <td className="border p-2">$150.00</td>
                     </tr>
-                    <tr className="bg-white">
+                    <tr className="bg-gray-500">
                       <td className="border p-2">002</td>
                       <td className="border p-2">Jane Smith</td>
                       <td className="border p-2">Processing</td>
                       <td className="border p-2">$200.00</td>
                     </tr>
-                    <tr className="bg-gray-100">
+                    <tr className="bg-gray-700">
                       <td className="border p-2">003</td>
                       <td className="border p-2">Jane Smith</td>
                       <td className="border p-2">Processing</td>
                       <td className="border p-2">$250.00</td>
                     </tr>
-                    <tr className="bg-white">
+                    <tr className="bg-gray-500">
                       <td className="border p-2">004</td>
                       <td className="border p-2">Jane Smith</td>
                       <td className="border p-2">Processing</td>

@@ -14,7 +14,7 @@ const Sidebar = () => {
     <div className="flex">
     <div className="w-55 h-screen bg-gray-800 text-white p-4 flex flex-col justify-between fixed top-0 left-0 ">
     <div>
-      <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
+      <h2 className="text-2xl mb-6">Admin Panel</h2>
       <nav>
         <Link href="/admindashboard" className="block py-2.5 px-4 rounded hover:bg-gray-700">
           Adminpage

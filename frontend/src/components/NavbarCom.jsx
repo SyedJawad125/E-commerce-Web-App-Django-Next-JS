@@ -27,7 +27,7 @@ const NavbarCom = () => {
           <div className="text-white hover:text-gray-300">Services</div>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link href="/categories">
           <div className="text-white hover:text-gray-300">Categories</div>
         </Link>
@@ -36,15 +36,15 @@ const NavbarCom = () => {
         <Link href="/products">
           <div className="text-white hover:text-gray-300">Products</div>
         </Link>
-      </li>
+      </li> */}
       <li>
         <Link href="/publicproducts">
-          <div className="text-white hover:text-gray-300">P Products</div>
+          <div className="text-white hover:text-gray-300">Products</div>
         </Link>
       </li>
       <li>
         <Link href="/publiccategories">
-          <div className="text-white hover:text-gray-300">P Categories</div>
+          <div className="text-white hover:text-gray-300">Categories</div>
         </Link>
       </li>
       <li>
