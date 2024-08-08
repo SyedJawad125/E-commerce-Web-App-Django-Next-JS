@@ -59,7 +59,7 @@ const ProductsCom = () => {
   };
 
   return (
-    <div className="container mx-auto my-4 ml-56 w-3/4">
+    <div className="container mx-auto my-4 ml-60 w-3/4">
     <h2 className="text-2xl font-bold mb-4">List Of Products</h2>
 
     <button
