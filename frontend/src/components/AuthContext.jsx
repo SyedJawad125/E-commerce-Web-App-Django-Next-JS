@@ -6,8 +6,8 @@ import AxiosInstance from "@/components/AxiosInstance";
 export const AuthContext = createContext();
 console.log(AuthContext);
 
-const state = useContext(name)
-console.log(state)
+// const state = useContext(name)
+// console.log(state)
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => {

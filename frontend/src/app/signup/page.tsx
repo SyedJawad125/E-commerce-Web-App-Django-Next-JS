@@ -43,7 +43,7 @@ const SignUp = () => {
             Offer Best Performance
           </span>
         </h3>
-        <p className="text-gray-700 text-lg leading-relaxed mb-6 text-center lg:text-left">
+        <p className="text-gray-300 text-lg leading-relaxed mb-6 text-center lg:text-left">
           A Human Resource Management System (HRMS) is a comprehensive software
           suite designed to streamline and automate various HR processes within
           an organization. It encompasses functionalities like recruitment, onboarding,
@@ -52,46 +52,54 @@ const SignUp = () => {
         </p>
     </div>
 
-      <div className="w-full lg:w-1/3 ">
-        <div className="bg-white p-6 rounded-lg shadow-lg ">
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-wrap -mx-2 mb-4">
-              <div className="w-full md:w-1/2 px-2 mb-4 md:mb-0">
-                <div className="mb-4">
-                  <label className="block text-gray-700 mb-2 text-sm" htmlFor="firstName">First name</label>
-                  <input type="text" id="firstName" className="w-full px-3 py-2 border rounded-lg text-sm" value={first_name}
-                    onChange={e => setfirst_name(e.target.value)} />
-                </div>
+    <div className="lg:w-1/2 mb-5 lg:mb-0">
+        <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-8" style={{ marginRight: "150px" }}>
+          <form>
+            <div className="flex flex-wrap -mx-3">
+              <div className="w-full md:w-1/2 px-3 mb-4">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="form3Example1">
+                  First name
+                </label>
+                <input type="text" id="form3Example1" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value={first_name}
+                  onChange={e => setfirst_name(e.target.value)} />
               </div>
-              <div className="w-full md:w-1/2 px-2">
-                <div className="mb-4">
-                  <label className="block text-gray-700 mb-2 text-sm" htmlFor="lastName">Last name</label>
-                  <input type="text" id="lastName" className="w-full px-3 py-2 border rounded-lg text-sm" value={last_name}
-                    onChange={e => setlast_name(e.target.value)} />
-                </div>
+              <div className="w-full md:w-1/2 px-3 mb-4">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="form3Example2">
+                  Last name
+                </label>
+                <input type="text" id="form3Example2" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value={last_name}
+                  onChange={e => setlast_name(e.target.value)} />
               </div>
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 mb-2 text-sm" htmlFor="username">User Name</label>
-              <input type="text" id="username" className="w-full px-3 py-2 border rounded-lg text-sm" value={username}
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="form3Example3">
+                User Name
+              </label>
+              <input type="text" id="form3Example3" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value={username}
                 onChange={e => setusername(e.target.value)} />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 mb-2 text-sm" htmlFor="email">Email address</label>
-              <input type="email" id="email" className="w-full px-3 py-2 border rounded-lg text-sm" value={email}
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="form3Example3">
+                Email address
+              </label>
+              <input type="email" id="form3Example3" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value={email}
                 onChange={e => setemail(e.target.value)} />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 mb-2 text-sm" htmlFor="phone">Phone Number</label>
-              <input type="text" id="phone" className="w-full px-3 py-2 border rounded-lg text-sm" value={phone}
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="form3Example3">
+                Phone Number
+              </label>
+              <input type="text" id="form3Example3" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value={phone}
                 onChange={e => setphone(e.target.value)} />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 mb-2 text-sm" htmlFor="password">Password</label>
-              <input type="password" id="password" className="w-full px-3 py-2 border rounded-lg text-sm" value={password}
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="form3Example4">
+                Password
+              </label>
+              <input type="password" id="form3Example4" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value={password}
                 onChange={e => setpassword(e.target.value)} />
             </div>
-            <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg shadow-lg hover:bg-blue-700 text-sm">
+            <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Sign up
             </button>
           </form>

@@ -39,7 +39,7 @@ const Publiccategory = () => {
   }, [flag, router.query?.name]);
 
   const handleCategoryClick = (categoryId) => {
-    router.push('/publicproduct', { state: { categoryId } });
+    router.push('/categorywiseproductpage', { state: { categoryId } });
   };
 
   return ( 
