@@ -73,7 +73,7 @@ const CategoryCom = () => {
   
     <button
         className='btn btn-primary mt-3 bg-blue-500 text-white py-2 px-4 rounded'
-        onClick={() => router.push('/Add/Addcategory')}
+        onClick={() => router.push('/addcategorypage')}
       >
         Add Category
       </button>
