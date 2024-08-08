@@ -16,7 +16,7 @@ const TopNavbarCom = () => {
           <span>(+92) 333 1906382</span>
         </div>
         <div className="flex items-center space-x-4 mr-20 ">
-          {typeof window !== 'undefined' && localStorage.getItem('token') ? (
+          {/* {typeof window !== 'undefined' && localStorage.getItem('token') ? (
             <button onClick={logout} className="text-white hover:text-gray-300">
               Sign Out
             </button>
@@ -27,7 +27,7 @@ const TopNavbarCom = () => {
                 <span>Login</span>
               </div>
             </Link>
-          )}
+          )} */}
           <Link href="/signup">
             <div className="flex items-center space-x-2">
               <FontAwesomeIcon icon={faUserPlus} />

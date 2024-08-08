@@ -68,7 +68,7 @@ const CategoryCom = () => {
 
 
   return (
-    <div className="container mx-auto my-4 ml-60 w-3/4">
+    <div className="container mx-auto my-4 w-full bg-black ml-5">
     <h2 className="text-2xl font-bold mb-4">List Of Categories</h2>
   
     <button
