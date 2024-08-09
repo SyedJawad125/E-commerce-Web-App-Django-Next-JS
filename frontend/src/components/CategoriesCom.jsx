@@ -62,9 +62,9 @@ const CategoryCom = () => {
         console.log(error)
     }
     }
-//     const updateRecord = async (item) => {
-//     navigate('/Update/Updatecategory', {state: {data: item}})
-// }
+    const updateRecord = async (item) => {
+      router.push('/updatecategorypage', {state: {data: item}})
+}
 
 
   return (

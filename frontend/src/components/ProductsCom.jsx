@@ -52,10 +52,8 @@ const ProductsCom = () => {
   };
 
   const updateRecord = async (item) => {
-    router.push({
-      pathname: '/UpdateProductComponents',
-      query: { data: JSON.stringify(item) },
-    });
+    router.push(`/updateproductpage?id=${item.id}`);
+    
   };
 
   return (
