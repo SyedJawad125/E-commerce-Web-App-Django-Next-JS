@@ -6,6 +6,7 @@ import AxiosInstance from "@/components/AxiosInstance";
 interface Category {
   id: number;
   name: string;
+  price: number;
   // Add other fields if necessary
 }
 
@@ -21,26 +22,36 @@ const UpdateProduct = () => {
   const [prodHasCategory, setProdHasCategory] = useState('');
   const [categoryRecords, setCategoryRecords] = useState<Category[]>([]);
 
+  // const [name, setName] = useState('');
+  // const [description, setDescription] = useState('');
+  // const [price, setPrice] = useState('');
+  // const [image, setImage] = useState<File | null>(null);
+  // const [prodHasCategory, setProdHasCategory] = useState('');
+  // const [categoryRecords, setCategoryRecords] = useState<Category[]>([]);
+
   // Fetch product details if there's an ID
   useEffect(() => {
-    const fetchProductDetails = async () => {
-      try {
-        if (productId) {
-          const res = await AxiosInstance.get(`/ecommerce/product?id=${productId}`);
-          if (res && res.data) {
-            const product = res.data.data.data;
-            setName(product.name);
-            setDescription(product.description);
-            setPrice(product.price);
-            setProdHasCategory(product.prodHasCategory);
-          }
-        }
-      } catch (error) {
-        console.log('Error fetching product details:', error);
-      }
-    };
+    // const fetchProductDetails = async () => {
+    //   try {
+    //     if (productId) {
+    //       const res = await AxiosInstance.get(`/ecommerce/product?id=${productId}`);
+    //       if (res && res.data) {
+    //         const product = res.data.data.data;
+    //         setName(product.name);
+    //         setDescription(product.description);
+    //         setPrice(product.price);
+    //         setProdHasCategory(product.prodHasCategory);
+    //       }
+    //     }
+    //   } catch (error) {
+    //     console.log('Error fetching product details:', error);
+    //   }
+    // };
 
     // Fetch categories for the dropdown list
+
+    console.log('id')
+    console.log(productId)
     const fetchCategories = async () => {
       try {
         const res = await AxiosInstance.get('/ecommerce/category');
@@ -52,9 +63,10 @@ const UpdateProduct = () => {
       }
     };
 
-    fetchProductDetails();
+    // fetchProductDetails();
     fetchCategories();
-  }, [productId]);
+  // }, []); 
+}, [])
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();

@@ -50,7 +50,12 @@ const ProductsCom = () => {
       toast.error('Error deleting product!');
     }
   };
-
+  // const updateRecord = async (item) => {
+  //   router.push({
+  //     pathname: '/updateproductpage',
+  //     query: { data: JSON.stringify(item) }, // Serialize the item to a string
+  //   });
+  // };
   const updateRecord = async (item) => {
     router.push(`/updateproductpage?id=${item.id}`);
     
