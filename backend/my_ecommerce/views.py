@@ -113,7 +113,7 @@ class ContactViews(ModelViewSet):
 
 
 
-class employeeViews(ModelViewSet):
+class EmployeeViews(ModelViewSet):
     # authentication_classes = [JWTAuthentication]
 
     def post_employee(self, request):

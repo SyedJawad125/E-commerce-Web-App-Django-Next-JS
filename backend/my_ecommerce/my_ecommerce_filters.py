@@ -118,4 +118,5 @@ class EmployeeFilter(FilterSet):
 
     class Meta:
         model = Employee
-        fields ='__all__'
+        # fields ='__all__'
+        exclude = ['image']
