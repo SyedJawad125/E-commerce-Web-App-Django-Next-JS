@@ -66,3 +66,19 @@ class Contact(models.Model):
     message = models.TextField(null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='contact_created_by',null=True, blank=True)
     updated_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='contact_updated_by',null=True, blank=True)
+
+
+class Employee(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=15)
+    date_of_birth = models.DateField()
+    hire_date = models.DateField()
+    position = models.CharField(max_length=50)
+    department = models.CharField(max_length=50)
+    salary = models.DecimalField(max_digits=10, decimal_places=2)
+    is_active = models.BooleanField(default=True)
+    image = models.FileField(upload_to='employee_images/', blank=True, null=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE,related_name='employee_created_by', null=True, blank=True)
+    updated_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='employee_updated_by', null=True, blank=True)

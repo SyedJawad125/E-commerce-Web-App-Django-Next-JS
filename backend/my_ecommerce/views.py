@@ -5,7 +5,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 #from .blog_serializer import BlogSerializer
 from utils.base_authentication import JWTAuthentication
-from .my_ecommerce_controller import CategoryController, ContactController, ProductController, OrderController, \
+from .my_ecommerce_controller import CategoryController, ContactController, EmployeeController, ProductController, OrderController, \
     PublicproductController, PubliccategoryController, SlidercategoryController, SliderproductController
 
 # from rest_framework.permissions import IsAdminUser
@@ -20,6 +20,8 @@ publiccategory_controller = PubliccategoryController()
 slidercategory_controller = SlidercategoryController()
 order_controller = OrderController()
 contact_controller = ContactController()
+employee_controller = EmployeeController()
+
 
 
 class ProductViews(ModelViewSet):
@@ -107,3 +109,21 @@ class ContactViews(ModelViewSet):
 
     def delete_contact(self, request):
         return contact_controller.delete_contact(request)
+    
+
+
+
+class employeeViews(ModelViewSet):
+    # authentication_classes = [JWTAuthentication]
+
+    def post_employee(self, request):
+        return employee_controller.create(request)
+
+    def get_employee(self, request):
+        return employee_controller.get_employee(request)
+
+    def update_employee(self, request):
+        return employee_controller.update_employee(request)
+
+    def delete_employee(self, request):
+        return employee_controller.delete_employee(request)
