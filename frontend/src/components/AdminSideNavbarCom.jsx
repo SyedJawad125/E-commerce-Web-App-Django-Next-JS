@@ -19,6 +19,9 @@ const Sidebar = () => {
         <Link href="/admindashboard" className="block py-2.5 px-4 rounded hover:bg-gray-700">
           Adminpage
         </Link>
+        <Link href="/employeepage" className="block py-2.5 px-4 rounded hover:bg-gray-700">
+          Employee Record
+        </Link>
         <Link href="/products" className="block py-2.5 px-4 rounded hover:bg-gray-700">
           AdminProducts
         </Link>
