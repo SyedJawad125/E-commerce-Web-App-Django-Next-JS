@@ -1,9 +1,64 @@
-import React from 'react'
+'use client';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import AxiosInstance from '@/components/AxiosInstance';
 
-const page = () => {
+const EmployeeDetail = () => {
+  const router = useRouter();
+  const [employee, setEmployee] = useState(null);
+  const { id } = router.query; // Fetch the ID from the query parameters
+
+  useEffect(() => {
+    if (id) {
+      const fetchEmployeeDetail = async () => {
+        try {
+          const res = await AxiosInstance.get(`/ecommerce/employee?id=${id}`);
+          if (res && res.data && res.data.data) {
+            setEmployee(res.data.data);
+          } else {
+            console.error('Unexpected response structure:', res);
+          }
+        } catch (error) {
+          console.error('Error fetching employee details:', error);
+        }
+      };
+
+      fetchEmployeeDetail();
+    }
+  }, [id]);
+
+  if (!employee) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <div>Employee Detail Page</div>
-  )
-}
+    <div className="container mx-auto my-4 p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-4">Employee Details</h2>
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <p><strong>First Name:</strong> {employee.first_name}</p>
+          <p><strong>Last Name:</strong> {employee.last_name}</p>
+          <p><strong>Email:</strong> {employee.email}</p>
+        </div>
+        <div>
+          <p><strong>Phone Number:</strong> {employee.phone_number}</p>
+          <p><strong>Date of Birth:</strong> {employee.date_of_birth}</p>
+          <p><strong>Hire Date:</strong> {employee.hire_date}</p>
+        </div>
+        <div>
+          <p><strong>Position:</strong> {employee.position}</p>
+          <p><strong>Department:</strong> {employee.department}</p>
+          <p><strong>Salary:</strong> {employee.salary}</p>
+        </div>
+      </div>
+      <button
+        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
+        onClick={() => router.push('/EmployeeCom')}
+      >
+        Back to Employee List
+      </button>
+    </div>
+  );
+};
 
-export default page
+export default EmployeeDetail;

@@ -55,7 +55,9 @@ const EmployeeCom = () => {
   };
 
   const DetailRecord = async (item) => {
-    router.push(`/epmloyeesdetail?id=${item.id}`);
+    router.push(`/epmloyeesdetail`);
+    // router.push(`/epmloyeesdetail?id=${item.id}`);
+
   };
   // Pagination logic
   const indexOfLastRecord = currentPage * recordsPerPage;
