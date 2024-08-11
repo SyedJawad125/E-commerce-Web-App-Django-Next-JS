@@ -1,12 +1,26 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import AxiosInstance from '@/components/AxiosInstance';
+
+interface Employee {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  date_of_birth: string;
+  hire_date: string;
+  position: string;
+  department: string;
+  salary: number;
+}
 
 const EmployeeDetail = () => {
   const router = useRouter();
-  const [employee, setEmployee] = useState(null);
-  const { id } = router.query; // Fetch the ID from the query parameters
+  const searchParams = useSearchParams();
+  const [employee, setEmployee] = useState<Employee | null>(null);
+  const id = searchParams.get('id'); // Fetch the ID from the query parameters
 
   useEffect(() => {
     if (id) {
