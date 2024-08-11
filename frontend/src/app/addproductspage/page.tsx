@@ -67,7 +67,7 @@ const AddProduct = () => {
       if (image) formData.append('image', image);
       formData.append('prod_has_category', prodHasCategory);
 
-      const response = await AxiosInstance.patch('/ecommerce/product', formData, {
+      const response = await AxiosInstance.post('/ecommerce/product', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
