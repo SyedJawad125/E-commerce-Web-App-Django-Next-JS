@@ -84,7 +84,8 @@ const EmployeeCom = () => {
       <br />
       <br />
 
-      {data ? <p>Total: {data.count}</p> : <p>Total: 0</p>}
+      {/* {data ? <p>Total: {data.count}</p> : <p>Total: 0</p>} */}
+      {data && data.data ? <p>Total: {data.data.count}</p> : <p>Total: 0</p>}
 
       <div className="container mt-5 mr-10">
         {currentRecords.length > 0 ? (

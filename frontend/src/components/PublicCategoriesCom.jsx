@@ -29,6 +29,7 @@ const Publiccategory = () => {
         const res = await AxiosInstance.get('/ecommerce/publiccategory');
         if (res) {
           setRecords(res.data.data.data);
+          setData(res.data);
         }
       } catch (error) {
         console.error('Error occurred:', error);
@@ -47,7 +48,8 @@ const Publiccategory = () => {
         <h2 className="text-2xl font-bold mb-4">List Of Products</h2>
       <br />
       <br />
-      {data ? <p>Total: {data.count}</p> : <p>Total: 0</p>}
+      {/* {data ? <p>Total: {data.count}</p> : <p>Total: 0</p>} */}
+      { data && data.data ? <p>Total: {data.data.count}</p> : <p>Total: 0</p>}
       <br/>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {records.length > 0 ? (

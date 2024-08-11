@@ -26,6 +26,7 @@ const PublicProducts = () => {
                 const res = await AxiosInstance.get('/ecommerce/publicproduct');
                 if (res) {
                     setRecords(res.data.data.data);
+
                     setData(res.data);
                 }
             } catch (error) {
@@ -41,36 +42,41 @@ const PublicProducts = () => {
       };
 
     return (
-      <div className="container mx-auto my-4 ml-56 w-3/4">
-      <h2 className="text-2xl font-bold mb-4">List Of Products</h2>
-      <br />
-      <br />
-      {data ? <p>Total: {data.count}</p> : <p>Total: 0</p>}
-      <div className="container mt-5 mr-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {records.length ? (
-                  records.map((item) => (
-                      <div key={item.id} className="col mb-4">
-                          <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onClick={() => handleProductClick(item.id)}>
-                              <img src={`http://localhost:8000/${item.image}`} className="w-full h-48 object-cover" alt={item.name} />
-                              <div className="p-4">
-                                  <h5 className="text-lg font-bold text-gray-800">{item.name}</h5>
-                                  <p className="text-sm text-gray-600 mt-2">Description: {item.description}</p>
-                                  <p className="text-sm text-gray-600 mt-2 font-bold">Price: {item.price}</p>
-                                  <p className="text-sm text-gray-600 mt-2">Category: {item.category_name}</p>
-                                  
-                              </div>
-                          </div>
-                      </div>
-                  ))
-              ) : (
-                  <p>Loading....</p>
-              )}
-          </div>
-      </div>
-      <ToastContainer />
-      {/* <CategoryVerticalSlider /> */}
-  </div>  
+        <div className="container mx-auto my-4 ml-56 w-3/4">
+        <h2 className="text-2xl font-bold mb-4">List Of Products</h2>
+        <br />
+        <br />
+        {data && data.data ? <p>Total: {data.data.count}</p> : <p>Total: 0</p>}
+        {/* {(data.data.count) ? <p>Total: {data.data.count}</p> : <p>Total: 0</p>} */}
+        <br/>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {records.length > 0 ? (
+                records.map((item) => (
+                    <div
+                        key={item.id}
+                        className="card-5 cursor-pointer"
+                        onClick={() => handleProductClick(item.id)}
+                    >
+                        <img
+                            src={`http://localhost:8000/${item.image}`}
+                            className="card-image5 clickable-image w-full h-40 object-cover"
+                            alt={item.name}
+                        />
+                        <div className="card-body5 p-4">
+                            <h5 className="card-title text-lg font-semibold">{item.name}</h5>
+                            <p className="card-text text-sm mt-2">Description: {item.description}</p>
+                            <p className="card-text text-sm mt-2 font-bold">Price: {item.price}</p>
+                            <p className="card-text text-sm mt-2">Category: {item.category_name}</p>
+                        </div>
+                    </div>
+                ))
+            ) : (
+                <p>Loading....</p>
+            )}
+        </div>
+        <ToastContainer />
+        {/* <CategoryVerticalSlider /> */}
+    </div>
     );
 };
 
