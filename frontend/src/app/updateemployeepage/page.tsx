@@ -8,10 +8,10 @@ interface Category {
   name: string;
   // Add other fields if necessary
 }
-const AddEmployee = () => {
+const UpdateEmployee = () => {
   const router = useRouter();
-  // const searchParams = useSearchParams();
-  // const productId = searchParams.get('id'); // Extract product ID from query params
+  const searchParams = useSearchParams();
+  const employeeId = searchParams.get('id'); // Extract product ID from query params
 
   const [first_name, setfirst_name] = useState('');
   const [last_name, setlast_name] = useState('');
@@ -78,7 +78,7 @@ const AddEmployee = () => {
       if (image) formData.append('image', image);
       // formData.append('prod_has_category', prodHasCategory);
 
-      const response = await AxiosInstance.post('/ecommerce/employee', formData, {
+      const response = await AxiosInstance.patch('/ecommerce/employee/?id=${employeeId}', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -270,4 +270,4 @@ const AddEmployee = () => {
   );
 };
 
-export default AddEmployee;
+export default UpdateEmployee;
