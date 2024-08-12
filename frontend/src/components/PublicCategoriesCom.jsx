@@ -61,7 +61,8 @@ const Publiccategory = () => {
             >
               <img
                 src={`http://localhost:8000/${item.image}`}
-                className="card-image5 clickable-image w-full h-40 object-cover"
+                className="card-image5 clickable-image w-full h-40 object-cover transform 
+                           transition-transform duration-300 hover:scale-105"
                 alt={item.name}
               />
               <div className="card-body5 p-4">

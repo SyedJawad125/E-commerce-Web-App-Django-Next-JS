@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
-const HoverBox = ({ productId, images }) => {
+const HoverBox = ({ products }) => {
   const router = useRouter();
 
   const handleProductClick = (productId) => {
@@ -11,24 +11,21 @@ const HoverBox = ({ productId, images }) => {
 
   return (
     <div
-      className="hover-box"
-      style={{
-        position: 'absolute',
-        display: 'none',
-        backgroundColor: '#fff',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-      }}
-    >
-      {images.map((image, index) => (
-        <img
-          key={index}
-          src={image}
-          alt={`Product ${index}`}
-          onClick={() => handleProductClick(productId)}
-          style={{ width: '100px', height: '100px', cursor: 'pointer' }}
-        />
-      ))}
+  className="absolute bg-white shadow-lg p-5 grid grid-cols-2 gap-1"
+  style={{
+    top: '100%',
+    left: 0,
+    zIndex: 1000,
+    width: '325px', // Adjust the width as needed
+  }}
+>
+  {products.map((product) => (
+    <div key={product.id} className="cursor-pointer" onClick={() => handleProductClick(product.id)}>
+      <img src={product.img1 || product.img2} alt={product.name} className="w-32 h-32 object-cover mb-4" />
+      <div className="text-black text-base">{product.name}</div>
     </div>
+  ))}
+</div>
   );
 };
 
