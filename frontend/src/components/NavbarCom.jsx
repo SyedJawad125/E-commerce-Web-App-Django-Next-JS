@@ -9,8 +9,8 @@ const NavbarCom = () => {
   const [hovering, setHovering] = useState(false);
 
   const sampleProducts = [
-    { id: 1, img1: 'images/1.jpg', name: 'Leather Bag' },
-    { id: 2, img2: 'images/2.jpg', name: 'Pent Coat' },
+    { id: 1, img1: 'images/7.jpg', name: 'Leather Bag' },
+    { id: 2, img2: 'images/8.jpg', name: 'Pent Coat' },
   ];
 
   return (
