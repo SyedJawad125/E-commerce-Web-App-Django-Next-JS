@@ -17,7 +17,8 @@ interface Employee {
   image: string; // Add this line if the image URL is part of the employee data
 }
 
-const EmployeeDetail = () => {
+const EmployeeDetail = ({ params }) => {
+    console.log(params.id);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [employee, setEmployee] = useState<Employee | null>(null);

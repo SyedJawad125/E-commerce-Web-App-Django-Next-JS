@@ -15,7 +15,6 @@ export default function Home() {
       <TopNavbarCom/>
       <NavbarCom/>
       <BannerSliderHomeCom/>
-      
       <FooterCom/>
     </main>
   );

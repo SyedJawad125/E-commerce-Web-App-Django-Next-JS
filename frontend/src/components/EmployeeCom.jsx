@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 const EmployeeCom = () => {
   const router = useRouter();
   const [records, setRecords] = useState([]);
+  const [filteredRecords, setFilteredRecords] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
   const [flag, setFlag] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,6 +28,7 @@ const EmployeeCom = () => {
         const res = await AxiosInstance.get('/ecommerce/employee');
         if (res && res.data && res.data.data && res.data.data.data) {
           setRecords(res.data.data.data);
+          setFilteredRecords(res.data.data.data); // Initialize filtered records
           setData(res.data);
         } else {
           console.error('Unexpected response structure:', res);
@@ -46,7 +49,7 @@ const EmployeeCom = () => {
         toast.success('Employee deleted successfully!');
       }
     } catch (error) {
-      toast.error('Error deleting product!');
+      toast.error('Error deleting employee!');
     }
   };
 
@@ -54,19 +57,30 @@ const EmployeeCom = () => {
     router.push(`/updateemployeepage?id=${item.id}`);
   };
 
-//   const DetailRecord = async (item) => {
-//     router.push(`/employeesdetail?id=${item.id}`);
-//   };
   const DetailRecord = async (item) => {
-    console.log("Item ID:", item.id); // Add this line
-    router.push(`/epmloyeesdetail?id=${item.id}`);
+    router.push(`/employeesdetail?id=${item.id}`);
   };
-  
+
+  const handleSearch = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchTerm(value);
+
+    const filtered = records.filter((record) => {
+        const idMatch = record.id.toString() === value;
+        const nameMatch = record.first_name.toLowerCase().includes(value) || record.last_name.toLowerCase().includes(value);
+
+        return idMatch || nameMatch;
+    });
+
+    setFilteredRecords(filtered);
+    setCurrentPage(1); // Reset to the first page
+  };
+
   // Pagination logic
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = records.slice(indexOfFirstRecord, indexOfLastRecord);
-  const totalPages = Math.ceil(records.length / recordsPerPage);
+  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
+  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -84,8 +98,18 @@ const EmployeeCom = () => {
       <br />
       <br />
 
-      {/* {data ? <p>Total: {data.count}</p> : <p>Total: 0</p>} */}
       {data && data.data ? <p>Total: {data.data.count}</p> : <p>Total: 0</p>}
+
+      {/* Search Bar */}
+      <div className="flex justify-center mb-5">
+        <input
+          type="text"
+          placeholder="Search by ID or Name"
+          value={searchTerm}
+          onChange={handleSearch}
+          className="px-4 py-2 w-1/2 rounded-md border bg-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
 
       <div className="container mt-5 mr-10">
         {currentRecords.length > 0 ? (
@@ -148,7 +172,7 @@ const EmployeeCom = () => {
             </div>
           </div>
         ) : (
-          <p>Loading....</p>
+          <p>No Employees found.</p>
         )}
       </div>
     </div>
