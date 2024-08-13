@@ -32,7 +32,7 @@ const NavbarCom = () => {
           ].map((item) => (
             <li
               key={item.path}
-              className={`relative mt-2 ${
+              className={`relative mt-0.5 ${
                 item.name === 'New In' ? 'hover-group' : ''
               }`}
               onMouseEnter={() => item.name === 'New In' && setHovering(true)}
