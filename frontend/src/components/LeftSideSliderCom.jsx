@@ -17,7 +17,7 @@ const LeftSideSliderCom = () => {
   };
 
   return (
-    <div className="fixed left-0 top-[11rem] bottom-[5rem] w-[15%] h-auto overflow-y-hidden z-10">
+    <div className="fixed left-0 top-[6rem] bottom-[15rem] w-[15%] h-auto overflow-y-hidden z-10">
       <Slider {...settings}>
         <div className="p-4 bg-gray-200"><h3>Item 1</h3></div>
         <div className="p-4 bg-gray-300"><h3>Item 2</h3></div>

@@ -16,15 +16,25 @@ export default function Home() {
     <>
     <TopNavbarCom />
     <NavbarCom />
-    <main className="relative flex">
-      <LeftSideSliderCom />
-      <div className="ml-[15%] w-[85%]">
-        
-        <BannerSliderHomeCom />
-        
-      </div>
-    </main>
+    {/* <LeftSideSliderCom /> */}
+    <BannerSliderHomeCom />
     <FooterCom />
-    </>
+  </>
   );
 }
+
+{/* <>
+    <TopNavbarCom />
+    <NavbarCom />
+    <div className="flex flex-col min-h-screen">  
+      {/* Container for main and footer */}
+      // <main className="flex grow">  
+        {/* Grow ensures main takes up available space */}
+    //     <LeftSideSliderCom />
+    //     <div className="ml-[15%] w-[85%]">
+    //       <BannerSliderHomeCom />
+    //     </div>
+    //   </main>
+    //   <FooterCom />
+    // </div>
+  // </> */}

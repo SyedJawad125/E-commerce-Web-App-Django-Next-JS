@@ -7,7 +7,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaWhatsapp, FaLinkedinIn, FaYoutub
 
 const Footer = () => {
     return (
-        <footer id="footer" className="bg-gray-800 text-white py-8">
+        <footer id="footer" className="bg-gray-800 text-white py-8 mt-20">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="flex justify-center md:justify-start ml-20">
                 <a href="/">
