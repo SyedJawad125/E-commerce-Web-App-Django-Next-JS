@@ -61,20 +61,38 @@ const EmployeeCom = () => {
     router.push(`/employeesdetail?id=${item.id}`);
   };
 
+  // const handleSearch = (e) => {
+  //   const value = e.target.value.toLowerCase();
+  //   setSearchTerm(value);
+
+  //   const filtered = records.filter((record) => {
+  //       const idMatch = record.id.toString() === value;
+  //       const nameMatch = record.first_name.toLowerCase().includes(value) || record.last_name.toLowerCase().includes(value);
+
+  //       return idMatch || nameMatch;
+  //   });
+
+  //   setFilteredRecords(filtered);
+  //   setCurrentPage(1); // Reset to the first page
+  // };
+
+
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setSearchTerm(value);
-
+  
     const filtered = records.filter((record) => {
-        const idMatch = record.id.toString() === value;
-        const nameMatch = record.first_name.toLowerCase().includes(value) || record.last_name.toLowerCase().includes(value);
-
-        return idMatch || nameMatch;
+      const fullName = `${record.first_name.toLowerCase()} ${record.last_name.toLowerCase()}`;
+      const idMatch = record.id.toString() === value;
+      const nameMatch = fullName.includes(value);
+  
+      return idMatch || nameMatch;
     });
-
+  
     setFilteredRecords(filtered);
     setCurrentPage(1); // Reset to the first page
   };
+  
 
   // Pagination logic
   const indexOfLastRecord = currentPage * recordsPerPage;
