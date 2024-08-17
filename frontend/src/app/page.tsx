@@ -6,6 +6,8 @@ import TopNavbarCom from "@/components/TopNavbarCom";
 import FooterCom from "@/components/FooterCom";
 import BannerSliderHomeCom from "@/components/BannerSliderHomeCom";
 import LeftSideSliderCom from "@/components/LeftSideSliderCom";
+import ContentpageHome from "@/components/ContentpageHome";
+
 
 
 
@@ -16,8 +18,9 @@ export default function Home() {
     <>
     <TopNavbarCom />
     <NavbarCom />
-    {/* <LeftSideSliderCom /> */}
     <BannerSliderHomeCom />
+    {/* <LeftSideSliderCom /> */}
+    <ContentpageHome/>
     <FooterCom />
   </>
   );

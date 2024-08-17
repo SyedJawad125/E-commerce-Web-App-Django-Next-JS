@@ -23,7 +23,7 @@ const BannerSlider = () => {
 
   return (
     
-    <div id="banner-slider" className="container px-1 py-0 mb-40">
+    <div id="banner-slider" className="container px-1 py-0">
     <Slider {...settings} className="h-50"> {/* Adjust height as needed */}
       <div className="h-full">
         <Image 

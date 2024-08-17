@@ -24,6 +24,11 @@ const LeftSideSliderCom = () => {
         <div className="p-4 bg-gray-400"><h3>Item 3</h3></div>
         <div className="p-4 bg-gray-500"><h3>Item 4</h3></div>
         <div className="p-4 bg-gray-600"><h3>Item 5</h3></div>
+        <div className="p-4 bg-gray-200"><h3>Item 6</h3></div>
+        <div className="p-4 bg-gray-300"><h3>Item 7</h3></div>
+        <div className="p-4 bg-gray-400"><h3>Item 8</h3></div>
+        <div className="p-4 bg-gray-500"><h3>Item 9</h3></div>
+        <div className="p-4 bg-gray-600"><h3>Item 10</h3></div>
       </Slider>
     </div>
   );
