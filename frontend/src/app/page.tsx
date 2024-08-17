@@ -7,6 +7,8 @@ import FooterCom from "@/components/FooterCom";
 import BannerSliderHomeCom from "@/components/BannerSliderHomeCom";
 import LeftSideSliderCom from "@/components/LeftSideSliderCom";
 import ContentpageHome from "@/components/ContentpageHome";
+import AdModal from "@/components/AdModal";
+
 
 
 
@@ -16,6 +18,7 @@ import ContentpageHome from "@/components/ContentpageHome";
 export default function Home() {
   return (
     <>
+    <AdModal />
     <TopNavbarCom />
     <NavbarCom />
     <BannerSliderHomeCom />
