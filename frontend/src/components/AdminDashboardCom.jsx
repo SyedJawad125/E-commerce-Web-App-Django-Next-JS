@@ -1,5 +1,3 @@
-// pages/adminpage.js
-
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -88,7 +86,6 @@ const AdminPage = () => {
             </div>
           </div>
         </main>
-
         <footer className="p-4 bg-green-500 text-white text-center">
           © 2024 E-Commerce Admin Dashboard
         </footer>

@@ -95,7 +95,7 @@ const UpdateEmployee = () => {
 
   return (
     <div className="container mx-auto px-4 ml-20">
-  <h2 className="mt-4 text-2xl font-bold">Add Employee Here:</h2>
+  <h2 className="mt-4 text-2xl font-bold mt-5 mb-10">Update Employee Here:</h2>
   <form className="mt-3" onSubmit={handleSubmit}>
 
     {/* First Name and Last Name on the same row */}

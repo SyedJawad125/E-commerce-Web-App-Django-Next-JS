@@ -94,7 +94,7 @@ const UpdateProduct = () => {
 
   return (
     <div className="container mx-auto px-4 ml-20">
-      <h2 className="mt-4 text-2xl font-bold">Update Product Here:</h2>
+      <h2 className="mt-4 text-2xl font-bold mt-5 mb-10">Update Product Here:</h2>
       <form className="mt-3" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-1000">
