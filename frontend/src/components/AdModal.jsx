@@ -34,7 +34,7 @@ export default function AdModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center bg-black bg-opacity-50">
-      <div className="relative w-1/3 h-3/4 bg-white shadow-lg mt-5 ml-5">
+      <div className="relative w-1/3 h-3/4 bg-white shadow-lg mt-5 ml-10">
         <button
           className="absolute top-2 right-2 text-3xl font-bold text-white hover:text-red-600 z-10"
           onClick={closeModal}
