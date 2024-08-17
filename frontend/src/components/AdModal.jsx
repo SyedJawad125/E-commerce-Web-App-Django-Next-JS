@@ -7,30 +7,36 @@ import { useRouter } from 'next/navigation';
 
 export default function AdModal() {
   const router = useRouter();
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    // Check if the modal has already been shown in this session
+    const modalShown = sessionStorage.getItem('modalShown');
+    if (!modalShown) {
+      setShowModal(true);
+
+      // Set a timer to close the modal after 5 seconds
+      const timer = setTimeout(() => {
+        setShowModal(false);
+        sessionStorage.setItem('modalShown', 'true');
+      }, 5000);
+
+      // Clear the timer if the component unmounts
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const closeModal = () => {
     setShowModal(false);
+    sessionStorage.setItem('modalShown', 'true');
   };
-
-  useEffect(() => {
-    // Automatically show the modal when the page loads
-    setShowModal(true);
-
-    // Set a timer to close the modal after 5 seconds
-    const timer = setTimeout(() => {
-      setShowModal(false);
-    }, 5000);
-
-    // Clear the timer if the component unmounts
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!showModal) return null;
 
   const handleProductClick = () => {
+    closeModal();
     router.push(`/publicproducts`);
   };
+
+  if (!showModal) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center bg-black bg-opacity-50">
