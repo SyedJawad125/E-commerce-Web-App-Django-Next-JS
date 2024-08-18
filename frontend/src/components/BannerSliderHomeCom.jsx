@@ -28,7 +28,7 @@ const NextJsCarousel = () => {
           >
               <div>
                   <Image
-                      src={banner2}
+                      src={banner1}
                       alt="image1"
                       className="w-full h-[87vh] object-cover"
                   />
