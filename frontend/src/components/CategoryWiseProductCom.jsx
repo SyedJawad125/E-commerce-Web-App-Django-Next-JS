@@ -35,6 +35,9 @@ const CategoryWiseProductCom = () => {
   const handleBackButton = () => {
     router.push('/publiccategories');
   };
+  const handleProductClick = (ProductId) => {
+    router.push(`/productdetailpage?ProductId=${ProductId}`);
+};
 
   return (
 <div className="container mx-auto mt-4 mb-24 ml-52">
@@ -53,11 +56,11 @@ const CategoryWiseProductCom = () => {
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 w-3/4">
     {products.length ? (
       products.map((product) => (
-        <div key={product.id} className="bg-black shadow-lg rounded-lg p-4">
-          <div className="card">
+        <div key={product.id} className="bg-black shadow-lg rounded-lg p-4" onClick={() => handleProductClick(product.id)}>
+          <div className="card hover:scale-105">
             <img
               src={`http://localhost:8000/${product.image}`}
-              className="card-img-top w-full h-64 object-cover"
+              className="card-img-top w-full h-64 object-cover "
               alt={product.name}
             />
             <div className="card-body bg-gray-800" >
