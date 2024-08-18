@@ -1,1 +1,1 @@
-E-commerce Web App Backend Using Django and frontend Using Next JS 14.
+Ecommerce Web App, In which admin can CRUD of categories and products in admin site after login and Public can visits site easily and purchased many products. Frontend with Next JS 14 and Backend with Django DRF.
