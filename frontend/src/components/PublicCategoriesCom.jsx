@@ -4,11 +4,9 @@ import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AxiosInstance from "@/components/AxiosInstance";
-// import ProductVerticalSlider from './ProductVerticalSlider';
 
 const Publiccategory = () => {
   const router = useRouter();
-//   const { state } = router.query;
 
   const [data, setData] = useState([]);
   const [records, setRecords] = useState([]);
@@ -22,7 +20,6 @@ const Publiccategory = () => {
         toast.success('Product deleted');
         setFlag(false);
     }
-
 
     const receiveData = async () => {
       try {
@@ -40,7 +37,8 @@ const Publiccategory = () => {
   }, [flag, router.query?.name]);
 
   const handleCategoryClick = (categoryId) => {
-    router.push('/categorywiseproductpage', { state: { categoryId } });
+    // Correctly pass categoryId in query parameters
+    router.push(`/categorywiseproductpage?categoryId=${categoryId}`);
   };
 
   return ( 
@@ -48,7 +46,6 @@ const Publiccategory = () => {
         <h2 className="text-2xl font-bold mb-4">List Of Products</h2>
       <br />
       <br />
-      {/* {data ? <p>Total: {data.count}</p> : <p>Total: 0</p>} */}
       { data && data.data ? <p>Total: {data.data.count}</p> : <p>Total: 0</p>}
       <br/>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -76,7 +73,6 @@ const Publiccategory = () => {
         )}
       </div>
       <ToastContainer />
-      {/* <ProductVerticalSlider /> */}
     </div>
   );
 };

@@ -38,7 +38,7 @@ const PublicProducts = () => {
     }, [flag, router.query?.name]);
 
     const handleProductClick = (ProductId) => {
-        router.push(`/productdetailpage/${ProductId}`);
+        router.push(`/productdetailpage?ProductId=${ProductId}`);
       };
 
     return (
