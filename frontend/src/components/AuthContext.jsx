@@ -1,15 +1,10 @@
-'use client'
 import React, { createContext, useState } from 'react';
-import AxiosInstance from "@/components/AxiosInstance";
-
 
 export const AuthContext = createContext();
-console.log(AuthContext);
-
-// const state = useContext(name)
-// console.log(state)
 
 export const AuthProvider = ({ children }) => {
+  console.log('AuthProvider is rendered');
+  
   const [token, setToken] = useState(() => {
     const token = localStorage.getItem('token');
     return token ? JSON.parse(token) : null;
@@ -21,12 +16,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    const res = await AxiosInstance.post('/user/logout');
-    if (res) {
-      console.log('Logout');
+    try {
+      // Assuming you're calling an API to log out
+      await AxiosInstance.post('/user/logout');
+      localStorage.removeItem('token');
+      setToken(null);
+    } catch (error) {
+      console.error('Logout error:', error);
     }
-    localStorage.removeItem('token');
-    setToken(null);
   };
 
   return (

@@ -1,17 +1,15 @@
-'use client';
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import AxiosInstance from "@/components/AxiosInstance";
-import { AuthContext } from "@/components/AuthContext";
+import { AuthContext } from "@/components/AuthContext";  // Ensure this import path is correct
 
 const Login = () => {
   const router = useRouter();
-  
-  const { login } = useContext(AuthContext);
-  
+  const { login } = useContext(AuthContext);  // Ensure this is not undefined
+  console.log('login:', login);   // Should log the `login` function or `undefined` if there's an issue
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [flag, setFlag] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,56 +25,36 @@ const Login = () => {
         router.push("/admindashboard");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Login error:', error);
     }
-  };
-
-  const Signupfunction = () => {
-    router.push('/signup');
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md">
         <div className="bg-white shadow-md rounded-lg p-8 mt-5">
-          <div className="mb-6">
-            <h3 className="text-center text-2xl font-semibold">Login</h3>
-          </div>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">User Name</label>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter Username"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                />
-                <div id="emailHelp" className="mt-2 text-xs text-gray-500">We'll never share your email with anyone else.</div>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-                <input
-                  type="password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                  id="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Login
-              </button>
-              <div className="mt-4 text-center">
-                <button type="button" className="text-sm text-blue-500 hover:underline" onClick={Signupfunction}>Sign Up</button>
-              </div>
-            </form>
-          </div>
-          <div className="mt-6 text-center text-gray-500">
-            <small>&copy; 2024 HRMS</small>
-          </div>
+          <h3 className="text-center text-2xl font-semibold">Login</h3>
+          <form onSubmit={handleSubmit}>
+            <label className="block text-sm font-medium text-gray-700">User Name</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter Username"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
+            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter Password"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
+            <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4">
+              Login
+            </button>
+          </form>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   const logout = () => {
     localStorage.removeItem('token');
-    router.push('/login')
+    router.push('/Login')
   };
 
   return (
@@ -52,7 +52,7 @@ const Sidebar = () => {
               Logout
             </button>
           ) : (
-            <Link href="/login">
+            <Link href="/Login">
               <div className="block py-2 px-4 bg-green-600 rounded hover:bg-green-500 text-center cursor-pointer">
                 Login
               </div>

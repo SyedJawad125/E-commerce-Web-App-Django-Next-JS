@@ -61,6 +61,7 @@ class PubliccategorySerializer(ModelSerializer):
         data['created_by'] = UserListingSerializer(instance.created_by).data if instance.created_by else None
         data['updated_by'] = UserListingSerializer(instance.updated_by).data if instance.updated_by else None
         return data
+    
 class SlidercategorySerializer(ModelSerializer):
     class Meta:
         model = Category
