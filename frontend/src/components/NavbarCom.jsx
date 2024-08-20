@@ -3,15 +3,19 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import HoverBox from '@/components/HoverBox';
+import { useCart } from '@/components/CartContext';  // Import Cart Context
 
 const NavbarCom = () => {
   const pathname = usePathname();
   const [hovering, setHovering] = useState(false);
+  const { cartItems } = useCart();  // Use Cart Context
 
   const sampleProducts = [
     { id: 1, img1: 'images/7.jpg', name: 'Leather Bag' },
     { id: 2, img2: 'images/8.jpg', name: 'Pent Coat' },
   ];
+
+  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <nav className="bg-blue-700 w-full">
@@ -52,6 +56,18 @@ const NavbarCom = () => {
               )}
             </li>
           ))}
+          <li>
+            <Link href="/addtocartpage">
+              <div className="text-white hover:text-black px-3 py-2 relative">
+                Cart
+                {cartItemCount > 0 && (
+                  <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-2">
+                    {cartItemCount}
+                  </span>
+                )}
+              </div>
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
@@ -59,7 +75,6 @@ const NavbarCom = () => {
 };
 
 export default NavbarCom;
-
 
 
 

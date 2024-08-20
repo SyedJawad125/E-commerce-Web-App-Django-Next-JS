@@ -68,12 +68,14 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AxiosInstance from "@/components/AxiosInstance";
+import { useCart } from '@/components/CartContext';
 
 const CategoryWiseProductCom = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const [products, setProducts] = useState([]);
+  const { addToCart } = useCart();  // Use Cart Context
 
   useEffect(() => {
     const ProductId = searchParams.get('ProductId'); // Safely retrieve categoryId from query params
@@ -100,6 +102,10 @@ const CategoryWiseProductCom = () => {
 
   const handleBackButton = () => {
     router.push('/publicproducts');
+  };
+  const handleAddToCart = () => {
+    addToCart(products);
+    // toast.success('Product added to cart!');
   };
 
   return (
@@ -134,6 +140,12 @@ const CategoryWiseProductCom = () => {
               <div className="text-gray-400 text-sm">
                 <p>Price: {product.price}</p>
               </div>
+              <button
+                type="button"
+                className="bg-green-500 text-white py-2 px-4 rounded mt-4"
+                onClick={handleAddToCart}>
+               Add to Cart
+              </button>
             </div>
           </div>
         ))
