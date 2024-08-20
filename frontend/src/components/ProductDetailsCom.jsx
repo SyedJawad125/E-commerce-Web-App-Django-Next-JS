@@ -1,69 +1,3 @@
-// 'use client';
-// import React, { useEffect, useState } from 'react';
-// import { useRouter } from 'next/navigation';
-// import AxiosInstance from '@/components/AxiosInstance';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// const ProductDetailPage = () => {
-//     const router = useRouter();
-//     const [product, setProduct] = useState({});  // Initialize as an object
-
-//     useEffect(() => {
-//         if (!router.isReady) return;
-
-//         const ProductId = router.query?.ProductId;
-
-//         if (ProductId) {
-//             const fetchProduct = async () => {
-//                 try {
-//                     const res = await AxiosInstance.get(`/ecommerce/publicproduct?id=${ProductId}`);
-//                     if (res && res.data && res.data.data && res.data.data.data) {
-//                         setProduct(res.data.data.data);
-//                     }
-//                 } catch (error) {
-//                     console.log('Error fetching product:', error);
-//                 }
-//             };
-//             fetchProduct();
-//         }
-//     }, [router.isReady, router.query]);
-
-//     if (!product || Object.keys(product).length === 0) {
-//         return <p>Loading...</p>;
-//     }
-
-//     const handleBackButton = () => {
-//         router.push('/publiccategory'); // Redirect to the main product listing page
-//     };
-
-//     return (
-//         <div className="container mx-auto my-4 px-4">
-//             <div className="mb-4">
-//                 <button
-//                     type="button"
-//                     className="bg-gray-500 text-white py-2 px-4 rounded"
-//                     onClick={handleBackButton}
-//                 >
-//                     Go Back
-//                 </button>
-//             </div>
-//             <div className="product-detail flex flex-col items-center">
-//                 <img src={`http://localhost:8000/${product.image}`} alt={product.name} className="w-64 h-64 object-cover" />
-//                 <h1 className="text-2xl font-bold mt-4">{product.name}</h1>
-//                 <p className="mt-2">Description: {product.description}</p>
-//                 <p className="mt-2">Price: {product.price}</p>
-//                 {/* Add to Cart button can be added here */}
-//             </div>
-//             <ToastContainer />
-//         </div>
-//     );
-// };
-
-// export default ProductDetailPage;
-
-
-
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -154,12 +88,78 @@ const CategoryWiseProductCom = () => {
       )}
     </div>
   </div>
-  
-
-  
-
 
   );
 };
 
 export default CategoryWiseProductCom;
+
+
+
+
+// 'use client';
+// import React, { useEffect, useState } from 'react';
+// import { useRouter } from 'next/navigation';
+// import AxiosInstance from '@/components/AxiosInstance';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+// const ProductDetailPage = () => {
+//     const router = useRouter();
+//     const [product, setProduct] = useState({});  // Initialize as an object
+
+//     useEffect(() => {
+//         if (!router.isReady) return;
+
+//         const ProductId = router.query?.ProductId;
+
+//         if (ProductId) {
+//             const fetchProduct = async () => {
+//                 try {
+//                     const res = await AxiosInstance.get(`/ecommerce/publicproduct?id=${ProductId}`);
+//                     if (res && res.data && res.data.data && res.data.data.data) {
+//                         setProduct(res.data.data.data);
+//                     }
+//                 } catch (error) {
+//                     console.log('Error fetching product:', error);
+//                 }
+//             };
+//             fetchProduct();
+//         }
+//     }, [router.isReady, router.query]);
+
+//     if (!product || Object.keys(product).length === 0) {
+//         return <p>Loading...</p>;
+//     }
+
+//     const handleBackButton = () => {
+//         router.push('/publiccategory'); // Redirect to the main product listing page
+//     };
+
+//     return (
+//         <div className="container mx-auto my-4 px-4">
+//             <div className="mb-4">
+//                 <button
+//                     type="button"
+//                     className="bg-gray-500 text-white py-2 px-4 rounded"
+//                     onClick={handleBackButton}
+//                 >
+//                     Go Back
+//                 </button>
+//             </div>
+//             <div className="product-detail flex flex-col items-center">
+//                 <img src={`http://localhost:8000/${product.image}`} alt={product.name} className="w-64 h-64 object-cover" />
+//                 <h1 className="text-2xl font-bold mt-4">{product.name}</h1>
+//                 <p className="mt-2">Description: {product.description}</p>
+//                 <p className="mt-2">Price: {product.price}</p>
+//                 {/* Add to Cart button can be added here */}
+//             </div>
+//             <ToastContainer />
+//         </div>
+//     );
+// };
+
+// export default ProductDetailPage;
+
+
+

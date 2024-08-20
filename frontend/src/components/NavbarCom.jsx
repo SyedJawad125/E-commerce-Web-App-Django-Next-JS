@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import HoverBox from '@/components/HoverBox';
 import { useCart } from '@/components/CartContext';  // Import Cart Context
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const NavbarCom = () => {
   const pathname = usePathname();
@@ -20,7 +22,7 @@ const NavbarCom = () => {
   return (
     <nav className="bg-blue-700 w-full">
       <div className="container mx-auto flex justify-between items-center p-0">
-        <div className="text-white text-xl font-bold ml-10">
+        <div className="text-white text-2xl font-bold ml-10">
           <Link href="/">ONLINE SHOP</Link>
         </div>
         <ul className="flex space-x-10 ml-auto mr-20">
@@ -46,7 +48,7 @@ const NavbarCom = () => {
                 <div
                   className={`${
                     item.path !== '/' && pathname === item.path ? 'text-red-500' : 'text-white'
-                  } hover:text-black px-3 py-2`}
+                  } hover:text-black px-3 py-2 text-lg`}  // Increased text size
                 >
                   {item.name}
                 </div>
@@ -59,7 +61,7 @@ const NavbarCom = () => {
           <li>
             <Link href="/addtocartpage">
               <div className="text-white hover:text-black px-3 py-2 relative">
-                Cart
+                <FontAwesomeIcon icon={faShoppingCart} className="text-2xl" />  {/* Increased icon size */}
                 {cartItemCount > 0 && (
                   <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-2">
                     {cartItemCount}
@@ -75,6 +77,7 @@ const NavbarCom = () => {
 };
 
 export default NavbarCom;
+
 
 
 

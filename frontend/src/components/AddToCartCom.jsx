@@ -1,6 +1,6 @@
 'use client';
 import React, { useContext } from 'react';
-import CartContext from '@/components/CartContext';
+import CartContext from "@/components/CartContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
