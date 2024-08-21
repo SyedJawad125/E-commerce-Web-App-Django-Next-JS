@@ -26,7 +26,6 @@ employee_controller = EmployeeController()
 
 class ProductViews(ModelViewSet):
     # authentication_classes = [JWTAuthentication]
-
     def post_product(self, request):
         return product_controller.create(request)
 
