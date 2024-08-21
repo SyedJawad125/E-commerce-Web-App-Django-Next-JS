@@ -15,11 +15,11 @@ const AddToCartPage = () => {
     };
 
     const handleProceedToCheckout = () => {
-        router.push('/checkout');
+        router.push('/checkoutpage');
     };
 
     const handleContinueShopping = () => {
-        router.push('/publiccategories');
+        router.push('/publicproducts');
     };
 
     return (
