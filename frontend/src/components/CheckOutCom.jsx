@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CheckoutPage = () => {
-    const { cart = [], dispatch } = useContext(CartContext); // Default to empty array if cart is undefined
+    const { cartItems  = [], dispatch } = useContext(CartContext); // Default to empty array if cart is undefined
     const router = useRouter();
     const [form, setForm] = useState({
         name: '',
@@ -21,30 +21,34 @@ const CheckoutPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (cart.length === 0) {
+        if (cartItems.length === 0) {
             toast.error('Your cart is empty');
             return;
         }
 
         // Simulate checkout process
-        console.log('Order placed', form, cart);
+        console.log('Order placed', form, cartItems);
         toast.success('Order placed successfully');
         dispatch({ type: 'CLEAR_CART' });
         router.push('/');
     };
 
     const handleContinueShopping = () => {
-        router.push('/publiccategory');
+        router.push('/publicproducts');
+    };
+
+    const handlePlaceAnOrder = () => {
+        router.push('/');
     };
 
     // Ensure item.price is a number
-    const totalPrice = cart.reduce((total, item) => total + (Number(item.price) || 0), 0);
-    const totalProducts = cart.length;
+    const totalPrice = cartItems.reduce((total, item) => total + (Number(item.price) || 0), 0);
+    const totalProducts = cartItems.length;
 
     return (
-        <div className="container mx-auto mt-10 mb-10">
+        <div className="container mx-auto mt-4 mb-24 ml-52">
             <div className="flex flex-col lg:flex-row">
-                <div className="lg:w-1/2 p-4">
+                <div className="lg:w-1/3 p-4">
                     <h2 className="text-2xl font-semibold mb-6">Checkout</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
@@ -101,13 +105,14 @@ const CheckoutPage = () => {
                         <div className="flex gap-4">
                             <button
                                 type="submit"
-                                className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors w-1/3"
+                                className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors w-1/2"
+                                onClick={handlePlaceAnOrder}
                             >
                                 Place Order
                             </button>
                             <button
                                 type="button"
-                                className="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition-colors w-1/3"
+                                className="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition-colors w-1/2"
                                 onClick={handleContinueShopping}
                             >
                                 Continue Shopping
@@ -115,15 +120,15 @@ const CheckoutPage = () => {
                         </div>
                     </form>
                 </div>
-                <div className="lg:w-1/2 p-4 mt-6 lg:mt-0">
+                <div className="lg:w-1/2 p-4 mt-6 lg:mt-0 ml-20">
                     <h3 className="text-xl font-semibold mb-6">Order Summary</h3>
-                    {cart.length > 0 ? (
+                    {cartItems.length > 0 ? (
                         <>
-                            {cart.map((item) => (
+                            {cartItems.map((item) => (
                                 <div className="flex border-b border-gray-200 py-4" key={item.id}>
-                                    <div className="w-1/3">
+                                    <div className="w-1/6">
                                         <img
-                                            src={`/images/${item.image}`}
+                                            src={`http://localhost:8000/${item.image}`}
                                             alt={item.name}
                                             className="rounded-lg"
                                         />
