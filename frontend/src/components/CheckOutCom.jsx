@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CheckoutPage = () => {
-    const { cartItems  = [], dispatch } = useContext(CartContext); // Default to empty array if cart is undefined
+    const { cartItems = [], dispatch } = useContext(CartContext); // Default to empty array if cart is undefined
     const router = useRouter();
     const [form, setForm] = useState({
         name: '',
@@ -38,8 +38,8 @@ const CheckoutPage = () => {
     };
 
     // Ensure item.price is a number
-    const totalPrice = cartItems.reduce((total, item) => total + (Number(item.price) || 0), 0);
-    const totalProducts = cartItems.length;
+    const totalPrice = cartItems.reduce((total, item) => total + (Number(item.price) * item.quantity || 0), 0);
+    const totalProducts = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <div className="container mx-auto mt-4 mb-24 ml-52">
@@ -132,7 +132,7 @@ const CheckoutPage = () => {
                                     <div className="w-2/3 pl-4">
                                         <h4 className="text-lg font-medium">{item.name}</h4>
                                         <p className="text-gray-600">PKR. {item.price}</p>
-                                        <p className="text-gray-500 text-sm">Quantity: 1</p>
+                                        <p className="text-gray-500 text-sm">Quantity: {item.quantity}</p>
                                     </div>
                                 </div>
                             ))}
