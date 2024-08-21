@@ -5,13 +5,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CheckoutPage = () => {
-    const { cartItems = [], dispatch } = useContext(CartContext); // Default to empty array if cart is undefined
+    const { cartItems, clearCart } = useContext(CartContext); // Use clearCart instead of setCartItems
     const router = useRouter();
     const [form, setForm] = useState({
         name: '',
         address: '',
         email: '',
-        paymentMethod: '', // Initialize as an empty string for placeholder
+        paymentMethod: '',
     });
 
     const handleChange = (e) => {
@@ -28,8 +28,18 @@ const CheckoutPage = () => {
 
         // Simulate checkout process
         console.log('Order placed', form, cartItems);
+
+        // Clear cart and reset form
+        clearCart();
+
+        setForm({
+            name: '',
+            address: '',
+            email: '',
+            paymentMethod: '',
+        });
+
         toast.success('Order placed successfully');
-        dispatch({ type: 'CLEAR_CART' });
         router.push('/');
     };
 
@@ -37,7 +47,6 @@ const CheckoutPage = () => {
         router.push('/publicproducts');
     };
 
-    // Ensure item.price is a number
     const totalPrice = cartItems.reduce((total, item) => total + (Number(item.price) * item.quantity || 0), 0);
     const totalProducts = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -116,7 +125,7 @@ const CheckoutPage = () => {
                         </div>
                     </form>
                 </div>
-                <div className="lg:w-1/2 p-4 mt-6 lg:mt-0 ml-20">
+                <div className="lg:w-1/2 p-4 mt-6 lg:mt-0 ml-10">
                     <h3 className="text-xl font-semibold mb-6">Order Summary</h3>
                     {cartItems.length > 0 ? (
                         <>
@@ -131,7 +140,7 @@ const CheckoutPage = () => {
                                     </div>
                                     <div className="w-2/3 pl-4">
                                         <h4 className="text-lg font-medium">{item.name}</h4>
-                                        <p className="text-gray-600">PKR. {item.price}</p>
+                                        <p className="text-gray-600">PKR. {item.price}/-</p>
                                         <p className="text-gray-500 text-sm">Quantity: {item.quantity}</p>
                                     </div>
                                 </div>
