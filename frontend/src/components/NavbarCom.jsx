@@ -25,7 +25,7 @@ const NavbarCom = () => {
         <div className="text-white text-2xl font-bold ml-10">
           <Link href="/">ONLINE SHOP</Link>
         </div>
-        <ul className="flex space-x-10 ml-auto mr-20">
+        <ul className="flex space-x-10 ml-auto mr-10">
           {[
             { name: 'Home', path: '/' },
             { name: 'About', path: '/about' },
