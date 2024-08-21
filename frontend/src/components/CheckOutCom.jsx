@@ -11,7 +11,7 @@ const CheckoutPage = () => {
         name: '',
         address: '',
         email: '',
-        paymentMethod: 'Credit Card',
+        paymentMethod: '', // Initialize as an empty string for placeholder
     });
 
     const handleChange = (e) => {
@@ -37,10 +37,6 @@ const CheckoutPage = () => {
         router.push('/publicproducts');
     };
 
-    const handlePlaceAnOrder = () => {
-        router.push('/');
-    };
-
     // Ensure item.price is a number
     const totalPrice = cartItems.reduce((total, item) => total + (Number(item.price) || 0), 0);
     const totalProducts = cartItems.length;
@@ -52,7 +48,7 @@ const CheckoutPage = () => {
                     <h2 className="text-2xl font-semibold mb-6">Checkout</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                            <label htmlFor="name" className="block text-sm font-medium text-gray-500">Name</label>
                             <input
                                 type="text"
                                 id="name"
@@ -64,7 +60,7 @@ const CheckoutPage = () => {
                             />
                         </div>
                         <div className="mb-4">
-                            <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
+                            <label htmlFor="address" className="block text-sm font-medium text-gray-500">Address</label>
                             <input
                                 type="text"
                                 id="address"
@@ -76,7 +72,7 @@ const CheckoutPage = () => {
                             />
                         </div>
                         <div className="mb-4">
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-500">Email</label>
                             <input
                                 type="email"
                                 id="email"
@@ -88,15 +84,16 @@ const CheckoutPage = () => {
                             />
                         </div>
                         <div className="mb-4">
-                            <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-700">Payment Method</label>
+                            <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-500">Payment Method</label>
                             <select
                                 id="paymentMethod"
                                 name="paymentMethod"
                                 value={form.paymentMethod}
                                 onChange={handleChange}
-                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                className="mt-1 block w-full px-3 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 required
                             >
+                                <option value="" disabled>Select Payment Method</option>
                                 <option value="Credit Card">Credit Card</option>
                                 <option value="PayPal">PayPal</option>
                                 <option value="Bank Transfer">Bank Transfer</option>
@@ -106,7 +103,6 @@ const CheckoutPage = () => {
                             <button
                                 type="submit"
                                 className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors w-1/2"
-                                onClick={handlePlaceAnOrder}
                             >
                                 Place Order
                             </button>
