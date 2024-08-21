@@ -73,7 +73,7 @@ const ProductDetailsCom = () => {
           products.map((product) => (
             <div
               key={product.id}
-              className="md:col-start-2 md:col-span-2 bg-gray-900 shadow-2xl rounded-lg overflow-hidden transform hover:scale-105 transition duration-500 ease-in-out"
+              className="md:col-start-2 md:col-span-2 bg-gray-900 shadow-2xl rounded-lg overflow-hidden transform transition duration-500 ease-in-out"
             >
               <img
                 src={`http://localhost:8000/${product.image}`}
@@ -100,14 +100,15 @@ const ProductDetailsCom = () => {
                   >
                     +
                   </button>
-                </div>
-                <button
+                  <button
                   type="button"
-                  className="bg-green-500 text-white py-2 px-4 rounded mt-4"
+                  className="bg-green-500 text-white py-2 px-4 rounded mt-0 ml-10"
                   onClick={handleAddToCart}
                 >
                   Add to Cart
                 </button>
+                </div>
+               
               </div>
             </div>
           ))
