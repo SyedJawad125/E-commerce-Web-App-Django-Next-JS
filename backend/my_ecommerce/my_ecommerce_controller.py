@@ -24,9 +24,9 @@ class ProductController:
  
     def create(self, request):
         try:
-            # request.POST._mutable = True
-            # request.data["created_by"] = request.user.guid
-            # request.POST._mutable = False
+            request.POST._mutable = True
+            request.data["created_by"] = request.user.guid
+            request.POST._mutable = False
 
             # if request.user.role in ['admin', 'manager'] or request.user.is_superuser:  # roles
             validated_data = ProductSerializer(data=request.data)
@@ -71,9 +71,9 @@ class ProductController:
                 instance = Product.objects.filter(id=request.data["id"]).first()
 
                 if instance:
-                    # request.POST._mutable = True
-                    # request.data["updated_by"] = request.user.guid
-                    # request.POST._mutable = False
+                    request.POST._mutable = True
+                    request.data["updated_by"] = request.user.guid
+                    request.POST._mutable = False
 
                     # updating the instance/record
                     serialized_data = ProductSerializer(instance, data=request.data, partial=True)
@@ -170,9 +170,9 @@ class CategoryController:
 
     def create(self, request):
         try:
-            # request.POST._mutable = True
-            # request.data["created_by"] = request.user.guid
-            # request.POST._mutable = False
+            request.POST._mutable = True
+            request.data["created_by"] = request.user.guid
+            request.POST._mutable = False
 
             # if request.user.role in ['admin', 'manager'] or request.user.is_superuser:  # roles
             validated_data = CategorySerializer(data=request.data)
@@ -217,9 +217,9 @@ class CategoryController:
                 instance = Category.objects.filter(id=request.data["id"]).first()
 
                 if instance:
-                    # request.POST._mutable = True
-                    # request.data["updated_by"] = request.user.guid
-                    # request.POST._mutable = False
+                    request.POST._mutable = True
+                    request.data["updated_by"] = request.user.guid
+                    request.POST._mutable = False
 
                     # updating the instance/record
                     serialized_data = CategorySerializer(instance, data=request.data, partial=True)

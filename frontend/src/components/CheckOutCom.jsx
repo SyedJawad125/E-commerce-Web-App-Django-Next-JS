@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState ,useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 import { CartContext } from "@/components/CartContext";
 import { ToastContainer, toast } from 'react-toastify';
@@ -41,11 +41,15 @@ const CheckoutPage = () => {
 
         toast.success('Order placed successfully');
         router.push('/');
+        
     };
 
     const handleContinueShopping = () => {
         router.push('/publicproducts');
     };
+    // useEffect(() => {
+    //     toast.success('Toastify is working!');
+    //   }, []);
 
     const totalPrice = cartItems.reduce((total, item) => total + (Number(item.price) * item.quantity || 0), 0);
     const totalProducts = cartItems.reduce((total, item) => total + item.quantity, 0);

@@ -25,7 +25,7 @@ employee_controller = EmployeeController()
 
 
 class ProductViews(ModelViewSet):
-    # authentication_classes = [JWTAuthentication]
+    authentication_classes = [JWTAuthentication]
     def post_product(self, request):
         return product_controller.create(request)
 
@@ -51,7 +51,7 @@ class SliderproductViews(ModelViewSet):
 
 
 class CategoryViews(ModelViewSet):
-    # authentication_classes = [JWTAuthentication]
+    authentication_classes = [JWTAuthentication]
 
     def post_category(self, request):
         return category_controller.create(request)

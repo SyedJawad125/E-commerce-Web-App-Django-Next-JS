@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ReactNode } from 'react';
 import { CartProvider } from '@/components/CartContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Optional: Load the Inter font from Google Fonts if you're planning to use it in your project
 const inter = Inter({ subsets: ['latin'] });
@@ -23,6 +25,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <html lang="en" className={inter.className}> {/* Add the className for global font styling */}
         <body>
           {children}
+          <ToastContainer />
         </body>
       </html>
     </CartProvider>
