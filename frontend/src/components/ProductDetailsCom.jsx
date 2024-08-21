@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AxiosInstance from "@/components/AxiosInstance";
 import { useCart } from '@/components/CartContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const CategoryWiseProductCom = () => {
+const ProductDetailsCom = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -38,61 +40,68 @@ const CategoryWiseProductCom = () => {
     router.push('/publicproducts');
   };
   const handleAddToCart = () => {
-    addToCart(products);
-    // toast.success('Product added to cart!');
-  };
+    if (products.length > 0) {
+        addToCart(products[0]);  // Add the first product in the list
+        toast.success('Product added to cart!');
+        router.push('/addtocartpage');
+    } else {
+        console.error('No products to add to cart');
+    }
+};
 
   return (
     <div className="container mx-auto mt-6 mb-24 px-4 sm:px-6 lg:px-8 w-11/12 lg:w-3/4">
-    {/* <h2 className="text-3xl font-bold mb-6 text-white">Product Detail</h2> */}
-  
     <div className="flex justify-between items-center mb-8">
-      <button
-        type="button"
-        className="bg-gradient-to-r from-gray-800 to-gray-600 text-white px-6 py-3 rounded-lg shadow-lg hover:from-gray-700 hover:to-gray-500 transition duration-300"
-        onClick={handleBackButton}
-      >
-        Go Back
-      </button>
+        <button
+            type="button"
+            className="bg-gradient-to-r from-gray-800 to-gray-600 text-white px-6 py-3 rounded-lg shadow-lg hover:from-gray-700 hover:to-gray-500 transition duration-300"
+            onClick={handleBackButton}
+        >
+            Go Back
+        </button>
     </div>
-  
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-3/4">
-      {products.length ? (
-        products.map((product) => (
-          <div
-            key={product.id}
-            className="md:col-start-2 md:col-span-2 bg-gray-900 shadow-2xl rounded-lg overflow-hidden transform hover:scale-105 transition duration-500 ease-in-out"
-          >
-            <img
-              src={`http://localhost:8000/${product.image}`}
-              className="w-full h-72 object-cover"
-              alt={product.name}
-            />
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-white mb-3">{product.name}</h3>
-              <p className="text-gray-300 mb-4">{product.description}</p>
-              <div className="text-gray-400 text-sm">
-                <p>Price: {product.price}</p>
-              </div>
-              <button
-                type="button"
-                className="bg-green-500 text-white py-2 px-4 rounded mt-4"
-                onClick={handleAddToCart}>
-               Add to Cart
-              </button>
-            </div>
-          </div>
-        ))
-      ) : (
-        <p className="col-span-full text-center text-gray-500">No products found for this category.</p>
-      )}
-    </div>
-  </div>
 
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-3/4">
+        {products.length ? (
+            products.map((product) => (
+                <div
+                    key={product.id}
+                    className="md:col-start-2 md:col-span-2 bg-gray-900 shadow-2xl rounded-lg overflow-hidden transform hover:scale-105 transition duration-500 ease-in-out"
+                >
+                    <img
+                        src={`http://localhost:8000/${product.image}`}
+                        className="w-full h-72 object-cover"
+                        alt={product.name}
+                    />
+                    <div className="p-6">
+                        <h3 className="text-2xl font-semibold text-white mb-3">{product.name}</h3>
+                        <p className="text-gray-300 mb-4">{product.description}</p>
+                        <div className="text-gray-400 text-sm">
+                            <p>Price: {product.price}</p>
+                        </div>
+                        <button
+                            type="button"
+                            className="bg-green-500 text-white py-2 px-4 rounded mt-4"
+                            onClick={() => {
+                                handleAddToCart();
+                                // toast.success('Product added to cart!');
+                            }}
+                        >
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            ))
+        ) : (
+            <p className="col-span-full text-center text-gray-500">No products found for this category.</p>
+        )}
+    </div>
+    <ToastContainer />
+</div>
   );
 };
 
-export default CategoryWiseProductCom;
+export default ProductDetailsCom;
 
 
 
