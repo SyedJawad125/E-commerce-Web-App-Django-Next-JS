@@ -29,7 +29,7 @@ const EmployeeDetail = () => {
   }, [searchParams]);
 
   return (
-    <div className="container mx-auto my-4 p-6 bg-gray-800 rounded-lg shadow-lg">
+    <div className="container mx-auto my-0 p-6 bg-gray-800 rounded-lg shadow-lg">
     <h2 className="text-2xl font-bold mb-4 text-white ml-5">Employee Details</h2>
   
     {employees.length ? (
