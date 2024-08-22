@@ -16,7 +16,7 @@ const EmployeeDetail = () => {
         try {
           const res = await AxiosInstance.get(`/ecommerce/employee?id=${EpmloyeeId}`);
           if (res && res.data && res.data.data) {
-            setEmployees([res.data.data.data]); // Convert to array if it's a single object
+            setEmployees(res.data.data.data); // Convert to array if it's a single object
           } else {
             console.error('Unexpected API response structure:', res.data);
           }
