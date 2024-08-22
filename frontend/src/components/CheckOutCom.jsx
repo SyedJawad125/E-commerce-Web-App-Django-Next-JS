@@ -4,7 +4,7 @@ import { CartContext } from "@/components/CartContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 
 const CheckoutPage = () => {
     const { cartItems, clearCart } = useContext(CartContext);
@@ -22,53 +22,27 @@ const CheckoutPage = () => {
     };
 
     const generateInvoice = () => {
-    const doc = new jsPDF();
-    const invoiceElement = document.getElementById('invoice');
-
-    if (!invoiceElement) {
-        console.error("Invoice element not found");
-        toast.error('Invoice element not found');
-        return;
-    }
-
-    // Ensure the element is rendered off-screen but visible
-    invoiceElement.style.position = 'absolute';
-    invoiceElement.style.top = '-9999px';
-    invoiceElement.style.left = '-9999px';
-    invoiceElement.style.display = 'block';
-
-    setTimeout(() => {
-        html2canvas(invoiceElement, {
-            scale: 2, // Increase the scale for better resolution
-            useCORS: true,
-            logging: true,
-        }).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const imgWidth = doc.internal.pageSize.getWidth();
-            const pageHeight = doc.internal.pageSize.getHeight();
-            const imgHeight = canvas.height * imgWidth / canvas.width;
-
-            let heightLeft = imgHeight;
-            let position = 0;
-
-            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-
-            while (heightLeft >= 0) {
-                position = heightLeft - imgHeight;
-                doc.addPage();
-                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-            }
-
-            doc.save('invoice.pdf');
-        }).catch(err => {
-            console.error("Canvas generation failed", err);
-            toast.error('Failed to generate invoice');
+        const doc = new jsPDF();
+    
+        // Add content directly
+        doc.text('Online Ecommerce Store', 10, 10);
+        doc.text('Invoice', 10, 10);
+        doc.text(`Name: ${form.name}`, 10, 20);
+        doc.text(`Address: ${form.address}`, 10, 30);
+        doc.text(`Email: ${form.email}`, 10, 40);
+        doc.text(`Payment Method: ${form.paymentMethod}`, 10, 50);
+    
+        doc.text('Order Summary:', 10, 70);
+        cartItems.forEach((item, index) => {
+            doc.text(`${item.name} - Quantity: ${item.quantity} - Price: PKR. ${item.price}/-`, 10, 80 + (index * 10));
         });
-    }, 1500); // Delay to ensure all content is loaded
-};
-
+    
+        doc.text(`Total Products: ${totalProducts}`, 10, 80 + (cartItems.length * 10) + 10);
+        doc.text(`Total Price: PKR. ${totalPrice}/-`, 10, 80 + (cartItems.length * 10) + 20);
+    
+        doc.save('invoice.pdf');
+    };
+    
 
 // const generateInvoice = () => {
 //     const doc = new jsPDF();
@@ -238,7 +212,7 @@ const CheckoutPage = () => {
             </div>
 
             {/* Hidden Invoice Section */}
-            <div id="invoice" >
+            {/* <div id="invoice" >
                 <h2>Invoice</h2>
                 <p>Name: {form.name}</p>
                 <p>Address: {form.address}</p>
@@ -254,7 +228,7 @@ const CheckoutPage = () => {
                 </ul>
                 <h4>Total Products: {totalProducts}</h4>
                 <h4>Total Price: PKR. {totalPrice}/-</h4>
-            </div>
+            </div> */}
 
             <ToastContainer />
         </div>
