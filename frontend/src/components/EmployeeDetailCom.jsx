@@ -3,55 +3,37 @@ import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AxiosInstance from '@/components/AxiosInstance';
 
-interface Employee {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone_number: string;
-  date_of_birth: string;
-  hire_date: string;
-  position: string;
-  department: string;
-  salary: number;
-  image: string; // Add this line if the image URL is part of the employee data
-}
 
-const EmployeeDetail = ({ params }) => {
-    console.log(params.id);
+
+const EmployeeDetail = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [employee, setEmployee] = useState<Employee | null>(null);
-  const id = searchParams.get('id');
-
+  const [employee, setEmployee] = useState([]);
+  
   useEffect(() => {
-    console.log("ID from query params:", id); // Add this line
-    if (id) {
-      const fetchEmployeeDetail = async () => {
+    const EpmloyeeId = searchParams.get('EpmloyeeId');
+
+    if (EpmloyeeId) {
+      const fetchEmployee = async () => {
         try {
-          const res = await AxiosInstance.get(`/ecommerce/employee?id=${id}`);
-          if (res && res.data && res.data.data) {
-            setEmployee(res.data.data);
+          const res = await AxiosInstance.get(`/ecommerce/employee?id=${EpmloyeeId}`);
+          if (res && res.data && res.data.data && Array.isArray(res.data.data.data)) {
+            setEmployee(res.data.data.data);
           } else {
-            console.error('Unexpected response structure:', res);
+            console.error('Unexpected API response structure:', res.data);
           }
         } catch (error) {
-          console.error('Error fetching employee details:', error);
+          console.error('Error fetching products:', error);
         }
       };
-
-      fetchEmployeeDetail();
+      fetchEmployee();
     }
-  }, [id]);
-
-  if (!employee) {
-    return <p>Loading...</p>;
-  }
+  }, [searchParams]);
 
   return (
     <div className="container mx-auto my-4 p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4">Employee Details</h2>
-      <div className="grid grid-cols-2 gap-4">
+      <h2 className="text-2xl font-bold mb-4 text-black">Employee Details</h2>
+      <div className="grid grid-cols-2 gap-4 text-black">
         <div>
           <p><strong>First Name:</strong> {employee.first_name}</p>
           <p><strong>Last Name:</strong> {employee.last_name}</p>
@@ -75,7 +57,7 @@ const EmployeeDetail = ({ params }) => {
       </div>
       <button
         className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-        onClick={() => router.push('/EmployeeCom')}
+        onClick={() => router.push('/employeepage')}
       >
         Back to Employee List
       </button>

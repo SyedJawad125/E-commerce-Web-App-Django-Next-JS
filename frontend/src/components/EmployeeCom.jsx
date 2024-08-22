@@ -58,7 +58,7 @@ const EmployeeCom = () => {
   };
 
   const DetailRecord = (EpmloyeeId) => {
-    router.push(`/employeesdetail?EpmloyeeId=${EpmloyeeId}`);
+    router.push(`/epmloyeesdetail?EpmloyeeId=${EpmloyeeId}`);
   };
 //   const handleProductClick = (ProductId) => {
 //     router.push(`/productdetailpage?ProductId=${ProductId}`);
