@@ -25,7 +25,6 @@ const CheckoutPage = () => {
         const doc = new jsPDF();
     
         // Add content directly
-        doc.text('Online Ecommerce Store', 10, 10);
         doc.text('Invoice', 10, 10);
         doc.text(`Name: ${form.name}`, 10, 20);
         doc.text(`Address: ${form.address}`, 10, 30);
