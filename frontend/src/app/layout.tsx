@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { CartProvider } from '@/components/CartContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AuthProvider from '@/components/AuthProvider';
 
 // Optional: Load the Inter font from Google Fonts if you're planning to use it in your project
 const inter = Inter({ subsets: ['latin'] });
@@ -21,6 +22,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
+    <AuthProvider>
     <CartProvider>
       <html lang="en" className={inter.className}> {/* Add the className for global font styling */}
         <body>
@@ -29,6 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </body>
       </html>
     </CartProvider>
+    </AuthProvider>
   );
 }
 

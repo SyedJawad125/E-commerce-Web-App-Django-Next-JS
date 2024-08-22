@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+// import {AuthCon} from '@/components/AuthContext';
+
 
 
 const TopNavbarCom = () => {
@@ -15,7 +18,7 @@ const TopNavbarCom = () => {
           <FontAwesomeIcon icon={faPhone} className="h-3 w-3" />
           <span>(+92) 333 1906382</span>
         </div>
-        <div className="flex items-center space-x-4 mr-20 ">
+        {/* <div className="flex items-center space-x-4 mr-20 ">
           {typeof window !== 'undefined' && localStorage.getItem('token') ? (
             <button onClick={logout} className="text-white hover:text-gray-300">
               Sign Out
@@ -34,7 +37,7 @@ const TopNavbarCom = () => {
               <span>SignUp</span>
             </div>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
-import { AuthProvider } from "@/components/AuthContext";
-import "@/styles/globals.css";
+// AuthProvider.tsx
+import { AuthProvider } from "@/components/AuthContext";  // Or the correct path
 
-function MyApp({ Component, pageProps }) {
+const AuthProviderComponent = ({ children }) => {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      {children}
     </AuthProvider>
   );
-}
+};
 
-export default MyApp;
+export default AuthProviderComponent;

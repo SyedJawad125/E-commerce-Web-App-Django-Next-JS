@@ -10,11 +10,6 @@ import ContentpageHome from "@/components/ContentpageHome";
 import AdModal from "@/components/AdModal";
 
 
-
-
-
-
-
 export default function Home() {
   return (
     <>
