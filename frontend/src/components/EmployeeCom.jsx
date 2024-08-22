@@ -57,9 +57,12 @@ const EmployeeCom = () => {
     router.push(`/updateemployeepage?id=${item.id}`);
   };
 
-  const DetailRecord = async (item) => {
-    router.push(`/employeesdetail?id=${item.id}`);
+  const DetailRecord = (EpmloyeeId) => {
+    router.push(`/employeesdetail?EpmloyeeId=${EpmloyeeId}`);
   };
+//   const handleProductClick = (ProductId) => {
+//     router.push(`/productdetailpage?ProductId=${ProductId}`);
+// };
 
   // const handleSearch = (e) => {
   //   const value = e.target.value.toLowerCase();
