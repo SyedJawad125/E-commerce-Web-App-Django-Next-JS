@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link';
 import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

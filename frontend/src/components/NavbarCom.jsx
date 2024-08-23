@@ -34,7 +34,7 @@ const NavbarCom = () => {
             { name: 'Products', path: '/publicproducts' },
             { name: 'Categories', path: '/publiccategories' },
             { name: 'Contact', path: '/contact' },
-            { name: 'Admin', path: '/admindashboard' },
+            // { name: 'Admin', path: '/admindashboard' },
           ].map((item) => (
             <li
               key={item.path}
