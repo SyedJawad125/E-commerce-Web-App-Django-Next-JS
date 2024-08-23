@@ -38,7 +38,7 @@ const SignUp = () => {
     <div className="flex flex-wrap items-center justify-center ml-10 ">
     <div className="w-full lg:w-1/3 mb-10 lg:mb-0 mr-20">
         <h3 className="text-4xl font-extrabold mb-6 text-center lg:text-left">
-          The HRM System <br />
+          The Online System <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400">
             Offer Best Performance
           </span>
