@@ -494,9 +494,9 @@ class EmployeeController:
  
     def create(self, request):
         try:
-            # request.POST._mutable = True
-            # request.data["created_by"] = request.user.guid
-            # request.POST._mutable = False
+            request.POST._mutable = True
+            request.data["created_by"] = request.user.guid
+            request.POST._mutable = False
 
             # if request.user.role in ['admin', 'manager'] or request.user.is_superuser:  # roles
             validated_data = EmployeeSerializer(data=request.data)
@@ -541,9 +541,9 @@ class EmployeeController:
                 instance = Employee.objects.filter(id=request.data["id"]).first()
 
                 if instance:
-                    # request.POST._mutable = True
-                    # request.data["updated_by"] = request.user.guid
-                    # request.POST._mutable = False
+                    request.POST._mutable = True
+                    request.data["updated_by"] = request.user.guid
+                    request.POST._mutable = False
 
                     # updating the instance/record
                     serialized_data = EmployeeSerializer(instance, data=request.data, partial=True)

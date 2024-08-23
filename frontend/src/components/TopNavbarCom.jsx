@@ -4,14 +4,14 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faSignInAlt, faUserPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
-// import { AuthContext } from '@/components/AuthContext';
 
 const TopNavbarCom = () => {
-    // const { logout } = useContext(AuthContext);
-
     const router = useRouter();
+    
+    const [isLoggingOut, setIsLoggingOut] = React.useState(false);
 
     const logout = () => {
+        setIsLoggingOut(true);
         localStorage.removeItem('token');
         router.push('/');
     };
@@ -25,7 +25,11 @@ const TopNavbarCom = () => {
                 </div>
                 <div className="flex items-center space-x-4 mr-20">
                     {typeof window !== 'undefined' && localStorage.getItem('token') ? (
-                        <button onClick={logout} className="flex items-center space-x-2 text-white hover:text-gray-300">
+                        <button 
+                            onClick={logout} 
+                            disabled={isLoggingOut} 
+                            className={`flex items-center space-x-2 text-white hover:text-gray-300 ${isLoggingOut ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        >
                             <FontAwesomeIcon icon={faSignOutAlt} />
                             <span>Logout</span>
                         </button>
