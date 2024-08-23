@@ -28,36 +28,47 @@ const Login = () => {
       console.error('Login error:', error);
     }
   };
-
+  
+  const handleSignup = () => {
+    router.push("/signup");
+  };
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md">
-        <div className="bg-white shadow-md rounded-lg p-8 mt-5">
-          <h3 className="text-center text-2xl font-semibold">Login</h3>
-          <form onSubmit={handleSubmit}>
-            <label className="block text-sm font-medium text-gray-700">User Name</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter Username"
-              className="w-full text-black px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-            <label className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter Password"
-              className="w-full text-black px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-            <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4">
-              Login
-            </button>
-          </form>
-        </div>
+  <div className="w-full max-w-md">
+    <div className="bg-white shadow-md rounded-lg p-8 mt-5">
+      <h3 className="text-center text-2xl font-semibold">Login</h3>
+      <form onSubmit={handleSubmit}>
+        <label className="block text-sm font-medium text-gray-700">User Name</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter Username"
+          className="w-full text-black px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+        <label className="block text-sm font-medium text-gray-700">Password</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter Password"
+          className="w-full text-black px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+        <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4">
+          Login
+        </button>
+      </form>
+      <div className="flex justify-end mt-4">
+        <button 
+          onClick={handleSignup} 
+          className="w-1/4 bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">
+          Signup
+        </button>
       </div>
     </div>
+  </div>
+</div>
+
   );
 };
 
