@@ -60,7 +60,7 @@ const NavbarCom = () => {
           ))}
           <li>
             <Link href="/addtocartpage">
-              <div className="text-white hover:text-black px-3 py-2 relative">
+              <div className="text-white hover:text-black px-3 py-2 relative mr-5 mt-1">
                 <FontAwesomeIcon icon={faShoppingCart} className="text-2xl" />  {/* Increased icon size */}
                 {cartItemCount > 0 && (
                   <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-2">
