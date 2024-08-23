@@ -1,20 +1,22 @@
-'use client'
+'use client';
+
 import Link from 'next/link';
-import React, { useContext } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faSignInAlt, faUserPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 // import { AuthContext } from '@/components/AuthContext';
 
 const TopNavbarCom = () => {
     // const { logout } = useContext(AuthContext);
+
     const router = useRouter();
- 
 
     const logout = () => {
-      localStorage.removeItem('token');
-      router.push('/')
+        localStorage.removeItem('token');
+        router.push('/');
     };
+
     return (
         <div className="bg-black text-white p-3">
             <div className="container mx-auto flex justify-between items-center">
@@ -24,8 +26,9 @@ const TopNavbarCom = () => {
                 </div>
                 <div className="flex items-center space-x-4 mr-20">
                     {typeof window !== 'undefined' && localStorage.getItem('token') ? (
-                        <button onClick={logout} className="text-white hover:text-gray-300">
-                            Logout
+                        <button onClick={logout} className="flex items-center space-x-2 text-white hover:text-gray-300">
+                            <FontAwesomeIcon icon={faSignOutAlt} />
+                            <span>Logout</span>
                         </button>
                     ) : (
                         <Link href="/Login">
