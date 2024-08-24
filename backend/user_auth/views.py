@@ -7,6 +7,8 @@ from user_auth.user_controller import *
 register_controller = RegisterController()
 login_controller = LoginController()
 logout_controller = LogoutController()
+forget_password_controller = ForgetPasswordController()
+verify_otp_controller = VerifyOtpController()
 change_password_controller = ChangePasswordController()
 
 
