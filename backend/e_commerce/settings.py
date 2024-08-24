@@ -23,9 +23,9 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_SSL = True
 # EMAIL_USE_TLS = True
 EMAIL_PORT = 465
-EMAIL_HOST_USER = "nicenick1992@gmail.com"
-EMAIL_HOST_PASSWORD = "cmficdcqwvirmedc"
-
+EMAIL_HOST_USER = "alishah1250000@gmail.com"
+EMAIL_HOST_PASSWORD = "plellvfzhnnzbdkl"
+# plellvfzhnnzbdkl passwrord for 
 
 AUTH_USER_MODEL = 'user_auth.User'
 
