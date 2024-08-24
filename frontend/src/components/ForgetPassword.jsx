@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 import AxiosInstance from "@/components/AxiosInstance";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // FontAwesome icons
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ForgetPassword() {
     const router = useRouter();
@@ -13,7 +15,6 @@ export default function ForgetPassword() {
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [step, setStep] = useState(1); // Step 1 for email, Step 2 for OTP and reset
-    
     const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
     const handleForgetPassword = async () => {
@@ -35,21 +36,25 @@ export default function ForgetPassword() {
                 confirm_password: confirmPassword,
             });
             console.log("OTP verified successfully:", response);
-            alert("Password reset successful!");
+
+            // Show success toast
+            toast.success("Password reset successful!", {
+                onClose: () => {
+                    // Navigate to the Login page after the toast is closed
+                    router.push("/Login");
+                },
+            });
 
             // Clear the OTP, new password, and confirm password fields
             setOtp("");
             setNewPassword("");
             setConfirmPassword("");
-            
-            // Optionally, redirect the user to the login page here
-            // router.push("/Login");
         } catch (error) {
             console.error("Error verifying OTP:", error.response?.data || error.message);
             alert("Failed to verify OTP. Please try again.");
         }
     };
-     
+
     const handleback = () => {
         router.push("/Login");
     }
@@ -57,9 +62,11 @@ export default function ForgetPassword() {
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-700">
             <div className="w-full max-w-md p-8 space-y-8 bg-black rounded-lg shadow-md">
-                <button onClick={handleback} className="text-white">
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                </button>
+                {step === 1 && (
+                    <button onClick={handleback} className="text-white">
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                    </button>
+                )}
                 <h2 className="text-2xl font-bold text-center text-white">
                     {step === 1 ? "Forgot Password" : "Verify OTP"}
                 </h2>
@@ -128,6 +135,7 @@ export default function ForgetPassword() {
                     </div>
                 )}
             </div>
+            <ToastContainer />
         </div>
     );
 }

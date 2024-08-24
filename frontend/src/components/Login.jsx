@@ -1,18 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import AxiosInstance from "@/components/AxiosInstance";
-import { AuthContext } from "@/components/AuthContext";  // Ensure this import path is correct
+import { AuthContext } from "@/components/AuthContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // FontAwesome icons
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const router = useRouter();
-  const { login } = useContext(AuthContext);  // Ensure this is not undefined
-  console.log('login:', login);   // Should log the `login` function or `undefined` if there's an issue
+  const { login } = useContext(AuthContext);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +29,10 @@ const Login = () => {
         router.push("/admindashboard");
       }
     } catch (error) {
+      toast.error("Your username or password is wrong", {
+        position: "top-center",
+        autoClose: 3000,
+      });
       console.error('Login error:', error);
     }
   };
@@ -35,13 +40,14 @@ const Login = () => {
   const handleSignup = () => {
     router.push("/signup");
   };
-   
+
   const handleForgetpassword = () => {
     router.push("/forgetpassword");
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-700">
+      <ToastContainer />
       <div className="w-full max-w-md">
         <div className="bg-black shadow-md rounded-lg p-8 mt-5">
           <h3 className="text-center text-2xl font-semibold">Login</h3>
@@ -57,7 +63,7 @@ const Login = () => {
             <label className="block text-sm font-medium text-gray-500 mt-2 mb-2">Password</label>
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'} // Toggle between text and password
+                type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Password"
@@ -65,9 +71,9 @@ const Login = () => {
               />
               <span
                 className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+                onClick={() => setShowPassword(!showPassword)}
               >
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="text-black" /> {/* Eye icon with black color */}
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="text-black" />
               </span>
             </div>
             <button type="submit" className="w-full mt-5 bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4">
