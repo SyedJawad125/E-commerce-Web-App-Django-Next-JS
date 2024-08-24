@@ -41,11 +41,11 @@ const AdminPage = () => {
           <div className="flex-1 p-8 bg-gray-800 h-3/4 ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-white p-4 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-4">Sales Overview</h2>
+                <h2 className="text-2xl text-black font-bold mb-4">Sales Overview</h2>
                 <Bar data={data} />
               </div>
               <div className="bg-white p-4 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-4">Recent Orders</h2>
+                <h2 className="text-2xl font-bold mb-4 bg-black">Recent Orders</h2>
                 <table className="w-full border-collapse mt-4">
                   <thead>
                     <tr className="bg-black">

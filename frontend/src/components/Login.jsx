@@ -35,7 +35,10 @@ const Login = () => {
   const handleSignup = () => {
     router.push("/signup");
   };
-
+   
+  const handleForgetpassword = () => {
+    router.push("/forgetpassword");
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-700">
@@ -74,10 +77,17 @@ const Login = () => {
           <div className="flex justify-end mt-4">
             <button 
               onClick={handleSignup} 
-              className="w-1/4 bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">
+              className="w-1/4 mb-4 bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">
               Signup
             </button>
-          </div>   
+          </div>  
+          <div className="flex justify-end">
+            <button 
+              onClick={handleForgetpassword} 
+              className="block py-2 px-4 bg-green-700 rounded hover:bg-green-500 text-center cursor-pointer">
+              Forget Password
+            </button>
+          </div> 
         </div>
       </div>
     </div>
