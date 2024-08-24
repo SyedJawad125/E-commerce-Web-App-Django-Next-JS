@@ -1,10 +1,13 @@
 'use client';
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 import AxiosInstance from "@/components/AxiosInstance";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // FontAwesome icons
+import { faEye, faEyeSlash, faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // FontAwesome icons
 
 export default function ForgetPassword() {
+    const router = useRouter();
+
     const [email, setEmail] = useState("");
     const [otp, setOtp] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -33,17 +36,31 @@ export default function ForgetPassword() {
             });
             console.log("OTP verified successfully:", response);
             alert("Password reset successful!");
-            // You might want to redirect the user or clear the form here
+
+            // Clear the OTP, new password, and confirm password fields
+            setOtp("");
+            setNewPassword("");
+            setConfirmPassword("");
+            
+            // Optionally, redirect the user to the login page here
+            // router.push("/Login");
         } catch (error) {
             console.error("Error verifying OTP:", error.response?.data || error.message);
             alert("Failed to verify OTP. Please try again.");
         }
     };
+     
+    const handleback = () => {
+        router.push("/Login");
+    }
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold text-center text-gray-700">
+        <div className="flex justify-center items-center min-h-screen bg-gray-700">
+            <div className="w-full max-w-md p-8 space-y-8 bg-black rounded-lg shadow-md">
+                <button onClick={handleback} className="text-white">
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                </button>
+                <h2 className="text-2xl font-bold text-center text-white">
                     {step === 1 ? "Forgot Password" : "Verify OTP"}
                 </h2>
 

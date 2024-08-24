@@ -63,7 +63,7 @@ const ChangePassword = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-700">
       <div className="w-full max-w-md p-8 space-y-8 bg-black rounded shadow-lg">
-      <button onClick={handleback} className="text-white">
+        <button onClick={handleback} className="text-white">
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <h2 className="text-2xl font-bold text-center">Change Password</h2>
