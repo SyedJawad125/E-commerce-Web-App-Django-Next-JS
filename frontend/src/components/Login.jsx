@@ -36,9 +36,6 @@ const Login = () => {
     router.push("/signup");
   };
 
-  const handleChangepassword = () => {
-    router.push("/changepassword");
-  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-700">
@@ -80,14 +77,7 @@ const Login = () => {
               className="w-1/4 bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">
               Signup
             </button>
-          </div>
-          <div className="flex justify-end mt-4">
-            <button 
-              onClick={handleChangepassword} 
-              className="w-1/2 bg-gray-900 text-white font-semibold py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">
-              Change Password
-            </button>
-          </div>
+          </div>   
         </div>
       </div>
     </div>

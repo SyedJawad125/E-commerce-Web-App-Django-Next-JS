@@ -13,6 +13,10 @@ const Sidebar = () => {
     router.push('/Login')
   };
 
+  const handleChangepassword = () => {
+    router.push("/changepassword");
+  };
+
   return (
     <div className="flex">
       <div className="w-55 h-screen bg-gray-800 text-white p-4 flex flex-col justify-between fixed top-0 left-0">
@@ -46,19 +50,28 @@ const Sidebar = () => {
             </Link>
           </nav>
         </div>
-        <div>
-          {token ? (
-            <button onClick={logout} className="w-full py-2 px-4 bg-red-600 rounded hover:bg-red-500">
-              Logout
-            </button>
-          ) : (
-            <Link href="/Login">
-              <div className="block py-2 px-4 bg-green-600 rounded hover:bg-green-500 text-center cursor-pointer">
-                Login
-              </div>
-            </Link>
-          )}
-        </div>
+        <div className="space-y-2"> {/* Added space-y-2 to control the gap between elements */}
+  {token ? (
+    <button onClick={logout} className="w-full py-2 px-4 bg-red-600 rounded hover:bg-red-500">
+      Logout
+    </button>
+  ) : (
+    <Link href="/Login">
+      <div className="block py-2 px-4 bg-green-600 rounded hover:bg-green-500 text-center cursor-pointer">
+        Login
+      </div>
+    </Link>
+  )}
+  <div className="flex justify-end">
+    <button 
+      onClick={handleChangepassword} 
+      className="block py-2 px-4 bg-green-700 rounded hover:bg-green-500 text-center cursor-pointer">
+      Change Password
+    </button>
+  </div>
+</div>
+
+
       </div>
     </div>
   );

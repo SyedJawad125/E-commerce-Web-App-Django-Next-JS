@@ -1,10 +1,13 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import AxiosInstance from "@/components/AxiosInstance";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faArrowLeft  } from '@fortawesome/free-solid-svg-icons';
 
 const ChangePassword = () => {
+  const router = useRouter();
+
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -53,9 +56,16 @@ const ChangePassword = () => {
     }
   };
 
+   const handleback = () => {
+    router.push("/admindashboard");
+   }
+
   return (
     <div className="flex justify-center items-center h-screen bg-gray-700">
       <div className="w-full max-w-md p-8 space-y-8 bg-black rounded shadow-lg">
+      <button onClick={handleback} className="text-white">
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
         <h2 className="text-2xl font-bold text-center">Change Password</h2>
         {error && <p className="text-red-500">{error}</p>}
         {success && <p className="text-green-500">{success}</p>}
