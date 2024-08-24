@@ -47,6 +47,43 @@ class UserSerializer(serializers.ModelSerializer):
         return instance
 
 
+class VerifyOtpSerializer(serializers.Serializer):
+    otp = serializers.CharField(
+        label="otp",
+        style={"input_type": "otp"},
+        trim_whitespace=True,
+        write_only=True
+    )
+    new_password = serializers.CharField(
+        label="new_password",
+        style={"input_type": "new_password"},
+        trim_whitespace=True,
+        write_only=True
+    )
+    confirm_password = serializers.CharField(
+        label="confirm_password",
+        style={"input_type": "confirm_password"},
+        trim_whitespace=True,
+        write_only=True
+    )
+    def validate(self, instance):
+        user = self.context.get("user")
+        if user.check_password(instance["new_password"]):
+            raise SameOldPassword()
+        if len(instance["new_password"]) < 7:
+            raise PasswordMustBeEightChar()
+        if instance['new_password'] != instance['confirm_password']:
+            raise PasswordsDoesNotMatch()
+        return instance
+
+
+class ForgetPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField(
+        label="email",
+        trim_whitespace=True,
+        write_only=True
+    )
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(
         label="username",
