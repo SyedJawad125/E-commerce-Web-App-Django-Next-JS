@@ -48,6 +48,7 @@ const EmployeeDetail = () => {
             )}
           </div>
           <div className="md:w-2/3">
+            <p><strong>ID:</strong> {employee.id}</p>
             <p><strong>First Name:</strong> {employee.first_name}</p>
             <p><strong>Last Name:</strong> {employee.last_name}</p>
             <p><strong>Email:</strong> {employee.email}</p>
